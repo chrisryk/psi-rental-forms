@@ -46,54 +46,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormLogin.cs">
+    <Compile Include="Forms\CarAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogin.Designer.cs">
+    <Compile Include="Forms\CarAddEdit.Designer.cs">
+      <DependentUpon>CarAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CarSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CarSearch.Designer.cs">
+      <DependentUpon>CarSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRental.cs">
+    <Compile Include="Forms\FormRental.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRental.Designer.cs">
+    <Compile Include="Forms\FormRental.Designer.cs">
       <DependentUpon>FormRental.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUser.cs">
+    <Compile Include="Forms\FormUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUser.Designer.cs">
+    <Compile Include="Forms\FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControlCarManager.cs">
+    <Compile Include="UserControls\UserControlCarManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlCarManager.Designer.cs">
+    <Compile Include="UserControls\UserControlCarManager.Designer.cs">
       <DependentUpon>UserControlCarManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlCustomerManager.cs">
+    <Compile Include="UserControls\UserControlCustomerManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlCustomerManager.Designer.cs">
+    <Compile Include="UserControls\UserControlCustomerManager.Designer.cs">
       <DependentUpon>UserControlCustomerManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlInvoiceManager.cs">
+    <Compile Include="UserControls\UserControlInvoiceManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlInvoiceManager.Designer.cs">
+    <Compile Include="UserControls\UserControlInvoiceManager.Designer.cs">
       <DependentUpon>UserControlInvoiceManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlRentManager.cs">
+    <Compile Include="UserControls\UserControlRentManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlRentManager.Designer.cs">
+    <Compile Include="UserControls\UserControlRentManager.Designer.cs">
       <DependentUpon>UserControlRentManager.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormLogin.resx">
+    <EmbeddedResource Include="Forms\CarAddEdit.resx">
+      <DependentUpon>CarAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CarSearch.resx">
+      <DependentUpon>CarSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRental.resx">
+    <EmbeddedResource Include="Forms\FormRental.resx">
       <DependentUpon>FormRental.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,16 +123,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControlCarManager.resx">
+    <EmbeddedResource Include="UserControls\UserControlCarManager.resx">
       <DependentUpon>UserControlCarManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlCustomerManager.resx">
+    <EmbeddedResource Include="UserControls\UserControlCustomerManager.resx">
       <DependentUpon>UserControlCustomerManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlInvoiceManager.resx">
+    <EmbeddedResource Include="UserControls\UserControlInvoiceManager.resx">
       <DependentUpon>UserControlInvoiceManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlRentManager.resx">
+    <EmbeddedResource Include="UserControls\UserControlRentManager.resx">
       <DependentUpon>UserControlRentManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

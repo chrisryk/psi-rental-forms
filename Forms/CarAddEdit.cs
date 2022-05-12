@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarRental
+namespace CarRental.Forms
 {
-    public partial class UserControlCarManager : UserControl
+    public partial class CarAddEdit : Form
     {
-        public UserControlCarManager()
+        public CarAddEdit()
         {
             InitializeComponent();
+        }
+
+        private void CarAddEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UserControlCarManager.AddEditIsOpen = false;
         }
     }
 }

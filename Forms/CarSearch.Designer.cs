@@ -1,13 +1,13 @@
-﻿namespace CarRental
+﻿namespace CarRental.Forms
 {
-    partial class UserControlCarManager
+    partial class CarSearch
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -62,8 +62,8 @@
             this.carWorkspace.Dock = System.Windows.Forms.DockStyle.Top;
             this.carWorkspace.Location = new System.Drawing.Point(0, 0);
             this.carWorkspace.Name = "carWorkspace";
-            this.carWorkspace.Size = new System.Drawing.Size(978, 258);
-            this.carWorkspace.TabIndex = 4;
+            this.carWorkspace.Size = new System.Drawing.Size(800, 258);
+            this.carWorkspace.TabIndex = 6;
             // 
             // carSearchButton
             // 
@@ -98,7 +98,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(978, 128);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 128);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ratePanel
@@ -111,20 +111,20 @@
             this.ratePanel.Controls.Add(this.carRateFromLabel, 0, 0);
             this.ratePanel.Controls.Add(this.textBox2, 1, 0);
             this.ratePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ratePanel.Location = new System.Drawing.Point(783, 41);
+            this.ratePanel.Location = new System.Drawing.Point(643, 41);
             this.ratePanel.Name = "ratePanel";
             this.ratePanel.RowCount = 2;
             this.ratePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ratePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ratePanel.Size = new System.Drawing.Size(192, 84);
+            this.ratePanel.Size = new System.Drawing.Size(154, 84);
             this.ratePanel.TabIndex = 12;
             // 
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(99, 45);
+            this.textBox1.Location = new System.Drawing.Point(80, 45);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(90, 26);
+            this.textBox1.Size = new System.Drawing.Size(71, 26);
             this.textBox1.TabIndex = 9;
             // 
             // carRateToLabel
@@ -150,31 +150,31 @@
             // textBox2
             // 
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(99, 3);
+            this.textBox2.Location = new System.Drawing.Point(80, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(90, 26);
+            this.textBox2.Size = new System.Drawing.Size(71, 26);
             this.textBox2.TabIndex = 8;
             // 
             // carTypeTextBox
             // 
             this.carTypeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.carTypeTextBox.Location = new System.Drawing.Point(393, 41);
+            this.carTypeTextBox.Location = new System.Drawing.Point(323, 41);
             this.carTypeTextBox.Name = "carTypeTextBox";
-            this.carTypeTextBox.Size = new System.Drawing.Size(189, 26);
+            this.carTypeTextBox.Size = new System.Drawing.Size(154, 26);
             this.carTypeTextBox.TabIndex = 7;
             // 
             // carModelTextBox
             // 
             this.carModelTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.carModelTextBox.Location = new System.Drawing.Point(198, 41);
+            this.carModelTextBox.Location = new System.Drawing.Point(163, 41);
             this.carModelTextBox.Name = "carModelTextBox";
-            this.carModelTextBox.Size = new System.Drawing.Size(189, 26);
+            this.carModelTextBox.Size = new System.Drawing.Size(154, 26);
             this.carModelTextBox.TabIndex = 6;
             // 
             // carRateabel
             // 
             this.carRateabel.AutoSize = true;
-            this.carRateabel.Location = new System.Drawing.Point(783, 5);
+            this.carRateabel.Location = new System.Drawing.Point(643, 5);
             this.carRateabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.carRateabel.Name = "carRateabel";
             this.carRateabel.Size = new System.Drawing.Size(104, 20);
@@ -184,7 +184,7 @@
             // carSeatsLabel
             // 
             this.carSeatsLabel.AutoSize = true;
-            this.carSeatsLabel.Location = new System.Drawing.Point(588, 5);
+            this.carSeatsLabel.Location = new System.Drawing.Point(483, 5);
             this.carSeatsLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.carSeatsLabel.Name = "carSeatsLabel";
             this.carSeatsLabel.Size = new System.Drawing.Size(62, 20);
@@ -194,7 +194,7 @@
             // carTypeLabel
             // 
             this.carTypeLabel.AutoSize = true;
-            this.carTypeLabel.Location = new System.Drawing.Point(393, 5);
+            this.carTypeLabel.Location = new System.Drawing.Point(323, 5);
             this.carTypeLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.carTypeLabel.Name = "carTypeLabel";
             this.carTypeLabel.Size = new System.Drawing.Size(50, 20);
@@ -204,7 +204,7 @@
             // carModelLabel
             // 
             this.carModelLabel.AutoSize = true;
-            this.carModelLabel.Location = new System.Drawing.Point(198, 5);
+            this.carModelLabel.Location = new System.Drawing.Point(163, 5);
             this.carModelLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.carModelLabel.Name = "carModelLabel";
             this.carModelLabel.Size = new System.Drawing.Size(66, 20);
@@ -226,7 +226,7 @@
             this.carManufacturerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carManufacturerTextBox.Location = new System.Drawing.Point(3, 41);
             this.carManufacturerTextBox.Name = "carManufacturerTextBox";
-            this.carManufacturerTextBox.Size = new System.Drawing.Size(189, 26);
+            this.carManufacturerTextBox.Size = new System.Drawing.Size(154, 26);
             this.carManufacturerTextBox.TabIndex = 5;
             // 
             // seatsPanel
@@ -239,21 +239,21 @@
             this.seatsPanel.Controls.Add(this.carSeatsFromLabel, 0, 0);
             this.seatsPanel.Controls.Add(this.carSeatsFromTextBox, 1, 0);
             this.seatsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seatsPanel.Location = new System.Drawing.Point(588, 41);
+            this.seatsPanel.Location = new System.Drawing.Point(483, 41);
             this.seatsPanel.Name = "seatsPanel";
             this.seatsPanel.RowCount = 2;
             this.seatsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.seatsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.seatsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.seatsPanel.Size = new System.Drawing.Size(189, 84);
+            this.seatsPanel.Size = new System.Drawing.Size(154, 84);
             this.seatsPanel.TabIndex = 8;
             // 
             // carSeatsToTextBox
             // 
             this.carSeatsToTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.carSeatsToTextBox.Location = new System.Drawing.Point(97, 45);
+            this.carSeatsToTextBox.Location = new System.Drawing.Point(80, 45);
             this.carSeatsToTextBox.Name = "carSeatsToTextBox";
-            this.carSeatsToTextBox.Size = new System.Drawing.Size(89, 26);
+            this.carSeatsToTextBox.Size = new System.Drawing.Size(71, 26);
             this.carSeatsToTextBox.TabIndex = 9;
             // 
             // carSeatsToLabel
@@ -279,18 +279,19 @@
             // carSeatsFromTextBox
             // 
             this.carSeatsFromTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.carSeatsFromTextBox.Location = new System.Drawing.Point(97, 3);
+            this.carSeatsFromTextBox.Location = new System.Drawing.Point(80, 3);
             this.carSeatsFromTextBox.Name = "carSeatsFromTextBox";
-            this.carSeatsFromTextBox.Size = new System.Drawing.Size(89, 26);
+            this.carSeatsFromTextBox.Size = new System.Drawing.Size(71, 26);
             this.carSeatsFromTextBox.TabIndex = 8;
             // 
-            // UserControlCarManager
+            // CarSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.carWorkspace);
-            this.Name = "UserControlCarManager";
-            this.Size = new System.Drawing.Size(978, 608);
+            this.Name = "CarSearch";
+            this.Text = "CarSearch";
             this.carWorkspace.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
