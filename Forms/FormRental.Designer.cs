@@ -33,10 +33,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.controlsPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.carButton = new System.Windows.Forms.Button();
-            this.customerButton = new System.Windows.Forms.Button();
-            this.rentButton = new System.Windows.Forms.Button();
             this.invoiceButton = new System.Windows.Forms.Button();
+            this.rentButton = new System.Windows.Forms.Button();
+            this.customerButton = new System.Windows.Forms.Button();
+            this.carButton = new System.Windows.Forms.Button();
             this.mainContainer = new System.Windows.Forms.SplitContainer();
             this.workspacePanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
@@ -50,13 +50,13 @@
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 32);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(55, 29);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(55, 32);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -69,7 +69,7 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1057, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1169, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,65 +90,8 @@
             this.controlsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.controlsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.controlsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.controlsPanel.Size = new System.Drawing.Size(162, 621);
+            this.controlsPanel.Size = new System.Drawing.Size(179, 618);
             this.controlsPanel.TabIndex = 0;
-            // 
-            // carButton
-            // 
-            this.carButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.carButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.carButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("carButton.BackgroundImage")));
-            this.carButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.carButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.carButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.carButton.Location = new System.Drawing.Point(21, 20);
-            this.carButton.Margin = new System.Windows.Forms.Padding(20);
-            this.carButton.MaximumSize = new System.Drawing.Size(120, 120);
-            this.carButton.MinimumSize = new System.Drawing.Size(120, 120);
-            this.carButton.Name = "carButton";
-            this.carButton.Size = new System.Drawing.Size(120, 120);
-            this.carButton.TabIndex = 0;
-            this.carButton.Tag = "Car";
-            this.carButton.UseVisualStyleBackColor = false;
-            this.carButton.Click += new System.EventHandler(this.controlButton_Click);
-            // 
-            // customerButton
-            // 
-            this.customerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.customerButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.customerButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customerButton.BackgroundImage")));
-            this.customerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customerButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.customerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customerButton.Location = new System.Drawing.Point(21, 175);
-            this.customerButton.Margin = new System.Windows.Forms.Padding(20);
-            this.customerButton.MaximumSize = new System.Drawing.Size(120, 120);
-            this.customerButton.MinimumSize = new System.Drawing.Size(120, 120);
-            this.customerButton.Name = "customerButton";
-            this.customerButton.Size = new System.Drawing.Size(120, 120);
-            this.customerButton.TabIndex = 1;
-            this.customerButton.Tag = "Customer";
-            this.customerButton.UseVisualStyleBackColor = false;
-            this.customerButton.Click += new System.EventHandler(this.controlButton_Click);
-            // 
-            // rentButton
-            // 
-            this.rentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rentButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.rentButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rentButton.BackgroundImage")));
-            this.rentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rentButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rentButton.Location = new System.Drawing.Point(21, 330);
-            this.rentButton.Margin = new System.Windows.Forms.Padding(20);
-            this.rentButton.MaximumSize = new System.Drawing.Size(120, 120);
-            this.rentButton.MinimumSize = new System.Drawing.Size(120, 120);
-            this.rentButton.Name = "rentButton";
-            this.rentButton.Size = new System.Drawing.Size(120, 120);
-            this.rentButton.TabIndex = 2;
-            this.rentButton.Tag = "Rent";
-            this.rentButton.UseVisualStyleBackColor = false;
-            this.rentButton.Click += new System.EventHandler(this.controlButton_Click);
             // 
             // invoiceButton
             // 
@@ -158,7 +101,7 @@
             this.invoiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.invoiceButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.invoiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.invoiceButton.Location = new System.Drawing.Point(21, 485);
+            this.invoiceButton.Location = new System.Drawing.Point(29, 482);
             this.invoiceButton.Margin = new System.Windows.Forms.Padding(20);
             this.invoiceButton.MaximumSize = new System.Drawing.Size(120, 120);
             this.invoiceButton.MinimumSize = new System.Drawing.Size(120, 120);
@@ -169,10 +112,67 @@
             this.invoiceButton.UseVisualStyleBackColor = false;
             this.invoiceButton.Click += new System.EventHandler(this.controlButton_Click);
             // 
+            // rentButton
+            // 
+            this.rentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rentButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rentButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rentButton.BackgroundImage")));
+            this.rentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rentButton.Location = new System.Drawing.Point(29, 328);
+            this.rentButton.Margin = new System.Windows.Forms.Padding(20);
+            this.rentButton.MaximumSize = new System.Drawing.Size(120, 120);
+            this.rentButton.MinimumSize = new System.Drawing.Size(120, 120);
+            this.rentButton.Name = "rentButton";
+            this.rentButton.Size = new System.Drawing.Size(120, 120);
+            this.rentButton.TabIndex = 2;
+            this.rentButton.Tag = "Rent";
+            this.rentButton.UseVisualStyleBackColor = false;
+            this.rentButton.Click += new System.EventHandler(this.controlButton_Click);
+            // 
+            // customerButton
+            // 
+            this.customerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.customerButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.customerButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customerButton.BackgroundImage")));
+            this.customerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customerButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.customerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customerButton.Location = new System.Drawing.Point(29, 174);
+            this.customerButton.Margin = new System.Windows.Forms.Padding(20);
+            this.customerButton.MaximumSize = new System.Drawing.Size(120, 120);
+            this.customerButton.MinimumSize = new System.Drawing.Size(120, 120);
+            this.customerButton.Name = "customerButton";
+            this.customerButton.Size = new System.Drawing.Size(120, 120);
+            this.customerButton.TabIndex = 1;
+            this.customerButton.Tag = "Customer";
+            this.customerButton.UseVisualStyleBackColor = false;
+            this.customerButton.Click += new System.EventHandler(this.controlButton_Click);
+            // 
+            // carButton
+            // 
+            this.carButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.carButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.carButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("carButton.BackgroundImage")));
+            this.carButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.carButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.carButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.carButton.Location = new System.Drawing.Point(29, 20);
+            this.carButton.Margin = new System.Windows.Forms.Padding(20);
+            this.carButton.MaximumSize = new System.Drawing.Size(120, 120);
+            this.carButton.MinimumSize = new System.Drawing.Size(120, 120);
+            this.carButton.Name = "carButton";
+            this.carButton.Size = new System.Drawing.Size(120, 120);
+            this.carButton.TabIndex = 0;
+            this.carButton.Tag = "Car";
+            this.carButton.UseVisualStyleBackColor = false;
+            this.carButton.Click += new System.EventHandler(this.controlButton_Click);
+            // 
             // mainContainer
             // 
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer.Location = new System.Drawing.Point(0, 33);
+            this.mainContainer.Location = new System.Drawing.Point(0, 36);
             this.mainContainer.Name = "mainContainer";
             // 
             // mainContainer.Panel1
@@ -182,8 +182,8 @@
             // mainContainer.Panel2
             // 
             this.mainContainer.Panel2.Controls.Add(this.workspacePanel);
-            this.mainContainer.Size = new System.Drawing.Size(1057, 621);
-            this.mainContainer.SplitterDistance = 162;
+            this.mainContainer.Size = new System.Drawing.Size(1169, 618);
+            this.mainContainer.SplitterDistance = 179;
             this.mainContainer.TabIndex = 0;
             // 
             // workspacePanel
@@ -191,7 +191,7 @@
             this.workspacePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.workspacePanel.Location = new System.Drawing.Point(0, 0);
             this.workspacePanel.Name = "workspacePanel";
-            this.workspacePanel.Size = new System.Drawing.Size(891, 621);
+            this.workspacePanel.Size = new System.Drawing.Size(986, 618);
             this.workspacePanel.TabIndex = 0;
             // 
             // FormRental
@@ -199,11 +199,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(1057, 654);
+            this.ClientSize = new System.Drawing.Size(1169, 654);
             this.Controls.Add(this.mainContainer);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormRental";
             this.Text = "Car Rental";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRental_FormClosing);
             this.Load += new System.EventHandler(this.Rental_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

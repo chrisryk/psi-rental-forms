@@ -96,5 +96,11 @@ namespace CarRental
         {
             Application.Exit();
         }
+
+        private void FormRental_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Application.Exit();
+        }
     }
 }

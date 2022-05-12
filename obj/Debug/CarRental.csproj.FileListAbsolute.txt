@@ -1,39 +1,12 @@
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\bin\Debug\CarRental.exe.config
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\bin\Debug\CarRental.exe
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\bin\Debug\CarRental.pdb
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.csproj.AssemblyReference.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.csproj.SuggestedBindingRedirects.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.FormLogin.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.FormRental.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.Properties.Resources.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.UserControlCarManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.UserControlCustomerManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.UserControlInvoiceManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.UserControlRentManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.csproj.GenerateResource.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.csproj.CoreCompileInputs.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.exe
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental - build error\obj\Debug\CarRental.pdb
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\bin\Debug\CarRental.exe.config
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\bin\Debug\CarRental.exe
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\bin\Debug\CarRental.pdb
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.csproj.AssemblyReference.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.csproj.SuggestedBindingRedirects.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.FormLogin.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.FormRental.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.Properties.Resources.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.UserControlCarManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.UserControlCustomerManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.UserControlInvoiceManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.UserControlRentManager.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.csproj.GenerateResource.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.csproj.CoreCompileInputs.cache
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.exe
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — kopia\obj\Debug\CarRental.pdb
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\CarRental.exe.config
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\CarRental.exe
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\CarRental.pdb
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\CarRental.exe.config
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\EntityFramework.dll
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\EntityFramework.xml
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.csproj.AssemblyReference.cache
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.csproj.SuggestedBindingRedirects.cache
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.Forms.CarAddEdit.resources
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.FormLogin.resources
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.FormRental.resources
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.Properties.Resources.resources
@@ -43,7 +16,7 @@ C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.UserControlRentManager.resources
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.csproj.GenerateResource.cache
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.csproj.CoreCompileInputs.cache
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.csproj.CopyComplete
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.exe
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.pdb
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.Forms.CarAddEdit.resources
-C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.Forms.CarSearch.resources
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\bin\Debug\CarRental.pdb
