@@ -13,7 +13,7 @@ namespace CarRental
 {
     public partial class UserControlCarManager : UserControl
     {
-        private RentalEntities db;
+        public static RentalEntities DB { get; set; }
         public static bool AddEditIsOpen { get; set; }
         public static bool SearchIsOpen { get; set; }
         //private IList<int> ratesCollection;
@@ -23,7 +23,7 @@ namespace CarRental
             InitializeComponent();
             AddEditIsOpen = false;
             SearchIsOpen = false;
-            db = new RentalEntities();
+            DB = new RentalEntities();
 
             //ratesCollection = new List<int>();
 
@@ -56,26 +56,37 @@ namespace CarRental
 
             if (!AddEditIsOpen)
             {
-                CarAddEdit carAddEdit = new CarAddEdit();
-                carAddEdit.StartPosition = FormStartPosition.CenterScreen;
+                CarAddEdit carAddEdit;
 
                 if (value == "ADD")
                 {
+                    carAddEdit = new CarAddEdit();
+                    carAddEdit.StartPosition = FormStartPosition.CenterScreen;
                     carAddEdit.Show();
                 }
                 else if (value == "EDIT")
                 {
-                    carAddEdit.Show();
+                    int selectedId;
+                    try
+                    {
+                        selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
+                        var selectedCar = DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
+                        carAddEdit = new CarAddEdit(selectedCar);
+                        carAddEdit.StartPosition = FormStartPosition.CenterScreen;
+                        carAddEdit.Show();
+                        AddEditIsOpen = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Select item to edit.");
+                    }
                 }
-                
-                AddEditIsOpen = true;
             }
         }
-
         private void btnShowCars_Click(object sender, EventArgs e)
         {
-            var data = from c in db.Cars
-                       select new { ID = c.id, CAR = c.manufacturer + " " + c.model, RATE = c.daily_rate };
+            var data = from c in DB.Cars
+                       select new { ID = c.id, CAR = c.year + " " + c.manufacturer + " " + c.model, INSURANCE = c.insurance, RATE = c.daily_rate };
 
             try
             {
@@ -98,7 +109,7 @@ namespace CarRental
             var yearFrom = Convert.ToInt32(cbYearFrom.Text);
             var yearTo = Convert.ToInt32(cbYearTo.Text);
 
-            var data = from c in db.Cars
+            var data = from c in DB.Cars
                        where c.manufacturer.ToUpper().Contains(manufacturer)
                        where c.model.ToUpper().Contains(model)
                        where c.daily_rate >= dailyRateFrom && c.daily_rate <= dailyRateTo
@@ -120,16 +131,29 @@ namespace CarRental
 
         private void btnDeleteCar_Click(object sender, EventArgs e)
         {
-            var dataToDelete = dgvCars.SelectedRows;
-            var data = GetIndexes(dataToDelete);
+            var data = GetIndexes(dgvCars.SelectedRows);
+
+            if (data.Count() == 0)
+            {
+                MessageBox.Show("Select car to delete.", "Info");
+                return;
+            }
+
+            var userAnswer = MessageBox.Show("Data will be removed, proceed?", "Warning!", MessageBoxButtons.YesNo);
+
+            if (userAnswer == DialogResult.No)
+            {
+                return;
+            }
 
             foreach (var item in data)
             {
-                var carToDelete = db.Cars.Where(c => c.id == item).FirstOrDefault();
-                db.Cars.Remove(carToDelete); 
+                var carToDelete = DB.Cars.Where(c => c.id == item).FirstOrDefault();
+                DB.Cars.Remove(carToDelete); 
             }
 
-            db.SaveChanges();
+            DB.SaveChanges();
+            btnShowCars.PerformClick();
         }
 
         private IEnumerable<int> GetIndexes(DataGridViewSelectedRowCollection data)

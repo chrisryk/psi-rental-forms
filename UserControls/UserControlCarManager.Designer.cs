@@ -51,7 +51,6 @@
             this.cbRateFrom = new System.Windows.Forms.ComboBox();
             this.cbRateTo = new System.Windows.Forms.ComboBox();
             this.lbCarRate = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelCarYear.SuspendLayout();
@@ -367,20 +366,10 @@
             this.lbCarRate.TabIndex = 4;
             this.lbCarRate.Text = "DAILY RATE";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(157, 558);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
-            // 
             // UserControlCarManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnShowCars);
             this.Controls.Add(this.btnDeleteCar);
@@ -398,7 +387,6 @@
             this.panelCarRate.ResumeLayout(false);
             this.panelCarRate.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -427,6 +415,5 @@
         private System.Windows.Forms.ComboBox cbRateTo;
         private System.Windows.Forms.ComboBox cbYearFrom;
         private System.Windows.Forms.ComboBox cbYearTo;
-        private System.Windows.Forms.Label label1;
     }
 }
