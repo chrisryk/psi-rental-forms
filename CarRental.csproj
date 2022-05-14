@@ -91,6 +91,18 @@
     <Compile Include="Forms\FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RentAdd.Designer.cs">
+      <DependentUpon>RentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RentBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RentBack.Designer.cs">
+      <DependentUpon>RentBack.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoices.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
@@ -158,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormRental.resx">
       <DependentUpon>FormRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RentAdd.resx">
+      <DependentUpon>RentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RentBack.resx">
+      <DependentUpon>RentBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

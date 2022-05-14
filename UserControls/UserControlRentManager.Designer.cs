@@ -29,35 +29,51 @@
         private void InitializeComponent()
         {
             this.rentWorkspace = new System.Windows.Forms.Panel();
+            this.btnGiveBack = new System.Windows.Forms.Button();
             this.rentSearchButton = new System.Windows.Forms.Button();
+            this.btnNewRent = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.rentSearchCustomerSurnameTextBox = new System.Windows.Forms.TextBox();
-            this.rentSearchPhoneTextBox = new System.Windows.Forms.TextBox();
-            this.rentSearchEmailTextBox = new System.Windows.Forms.TextBox();
+            this.tbRentSurname = new System.Windows.Forms.TextBox();
+            this.tbPhone = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.rentSearchLicenceLabel = new System.Windows.Forms.Label();
             this.rentSearchPhoneLabel = new System.Windows.Forms.Label();
             this.rentSearchEmailLabel = new System.Windows.Forms.Label();
             this.rentSearchCustomerSurameLabel = new System.Windows.Forms.Label();
             this.rentSearchIdLabel = new System.Windows.Forms.Label();
-            this.rentSearchIdTextBox = new System.Windows.Forms.TextBox();
+            this.tbRentId = new System.Windows.Forms.TextBox();
             this.rentSearchDateFromLabel = new System.Windows.Forms.Label();
             this.rentSearchDateToPickerLabel = new System.Windows.Forms.Label();
-            this.rentSearchLicenceTextBox = new System.Windows.Forms.TextBox();
-            this.rentSearchDateFromPicker = new System.Windows.Forms.DateTimePicker();
-            this.rentSearchDateToPicker = new System.Windows.Forms.DateTimePicker();
+            this.tbLicence = new System.Windows.Forms.TextBox();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dgvRent = new System.Windows.Forms.DataGridView();
             this.rentWorkspace.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRent)).BeginInit();
             this.SuspendLayout();
             // 
             // rentWorkspace
             // 
+            this.rentWorkspace.Controls.Add(this.btnGiveBack);
             this.rentWorkspace.Controls.Add(this.rentSearchButton);
+            this.rentWorkspace.Controls.Add(this.btnNewRent);
             this.rentWorkspace.Controls.Add(this.tableLayoutPanel3);
-            this.rentWorkspace.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rentWorkspace.Location = new System.Drawing.Point(0, 0);
+            this.rentWorkspace.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.rentWorkspace.Location = new System.Drawing.Point(0, 315);
             this.rentWorkspace.Name = "rentWorkspace";
-            this.rentWorkspace.Size = new System.Drawing.Size(920, 236);
+            this.rentWorkspace.Size = new System.Drawing.Size(978, 293);
             this.rentWorkspace.TabIndex = 4;
+            // 
+            // btnGiveBack
+            // 
+            this.btnGiveBack.Location = new System.Drawing.Point(821, 231);
+            this.btnGiveBack.Name = "btnGiveBack";
+            this.btnGiveBack.Size = new System.Drawing.Size(139, 47);
+            this.btnGiveBack.TabIndex = 6;
+            this.btnGiveBack.Text = "GIVE BACK";
+            this.btnGiveBack.UseVisualStyleBackColor = true;
+            this.btnGiveBack.Click += new System.EventHandler(this.btnGiveBack_Click);
             // 
             // rentSearchButton
             // 
@@ -67,6 +83,17 @@
             this.rentSearchButton.TabIndex = 1;
             this.rentSearchButton.Text = "SEARCH";
             this.rentSearchButton.UseVisualStyleBackColor = true;
+            this.rentSearchButton.Click += new System.EventHandler(this.rentSearchButton_Click);
+            // 
+            // btnNewRent
+            // 
+            this.btnNewRent.Location = new System.Drawing.Point(654, 231);
+            this.btnNewRent.Name = "btnNewRent";
+            this.btnNewRent.Size = new System.Drawing.Size(139, 47);
+            this.btnNewRent.TabIndex = 5;
+            this.btnNewRent.Text = "NEW RENT";
+            this.btnNewRent.UseVisualStyleBackColor = true;
+            this.btnNewRent.Click += new System.EventHandler(this.btnNewRent_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -78,57 +105,57 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.33314F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.33314F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.00115F));
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchCustomerSurnameTextBox, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchPhoneTextBox, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchEmailTextBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbRentSurname, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbPhone, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbEmail, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchLicenceLabel, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchPhoneLabel, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchEmailLabel, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchCustomerSurameLabel, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchIdLabel, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchIdTextBox, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbRentId, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchDateFromLabel, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.rentSearchDateToPickerLabel, 6, 0);
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchLicenceTextBox, 4, 1);
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchDateFromPicker, 5, 1);
-            this.tableLayoutPanel3.Controls.Add(this.rentSearchDateToPicker, 6, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbLicence, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.dtpFrom, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.dtpTo, 6, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(920, 128);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(978, 128);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // rentSearchCustomerSurnameTextBox
+            // tbRentSurname
             // 
-            this.rentSearchCustomerSurnameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchCustomerSurnameTextBox.Location = new System.Drawing.Point(134, 41);
-            this.rentSearchCustomerSurnameTextBox.Name = "rentSearchCustomerSurnameTextBox";
-            this.rentSearchCustomerSurnameTextBox.Size = new System.Drawing.Size(125, 26);
-            this.rentSearchCustomerSurnameTextBox.TabIndex = 8;
+            this.tbRentSurname.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbRentSurname.Location = new System.Drawing.Point(143, 41);
+            this.tbRentSurname.Name = "tbRentSurname";
+            this.tbRentSurname.Size = new System.Drawing.Size(134, 26);
+            this.tbRentSurname.TabIndex = 8;
             // 
-            // rentSearchPhoneTextBox
+            // tbPhone
             // 
-            this.rentSearchPhoneTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchPhoneTextBox.Location = new System.Drawing.Point(396, 41);
-            this.rentSearchPhoneTextBox.Name = "rentSearchPhoneTextBox";
-            this.rentSearchPhoneTextBox.Size = new System.Drawing.Size(125, 26);
-            this.rentSearchPhoneTextBox.TabIndex = 7;
+            this.tbPhone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPhone.Location = new System.Drawing.Point(423, 41);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(134, 26);
+            this.tbPhone.TabIndex = 7;
             // 
-            // rentSearchEmailTextBox
+            // tbEmail
             // 
-            this.rentSearchEmailTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchEmailTextBox.Location = new System.Drawing.Point(265, 41);
-            this.rentSearchEmailTextBox.Name = "rentSearchEmailTextBox";
-            this.rentSearchEmailTextBox.Size = new System.Drawing.Size(125, 26);
-            this.rentSearchEmailTextBox.TabIndex = 6;
+            this.tbEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbEmail.Location = new System.Drawing.Point(283, 41);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(134, 26);
+            this.tbEmail.TabIndex = 6;
             // 
             // rentSearchLicenceLabel
             // 
             this.rentSearchLicenceLabel.AutoSize = true;
-            this.rentSearchLicenceLabel.Location = new System.Drawing.Point(527, 5);
+            this.rentSearchLicenceLabel.Location = new System.Drawing.Point(563, 5);
             this.rentSearchLicenceLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchLicenceLabel.Name = "rentSearchLicenceLabel";
             this.rentSearchLicenceLabel.Size = new System.Drawing.Size(78, 20);
@@ -138,7 +165,7 @@
             // rentSearchPhoneLabel
             // 
             this.rentSearchPhoneLabel.AutoSize = true;
-            this.rentSearchPhoneLabel.Location = new System.Drawing.Point(396, 5);
+            this.rentSearchPhoneLabel.Location = new System.Drawing.Point(423, 5);
             this.rentSearchPhoneLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchPhoneLabel.Name = "rentSearchPhoneLabel";
             this.rentSearchPhoneLabel.Size = new System.Drawing.Size(65, 20);
@@ -148,7 +175,7 @@
             // rentSearchEmailLabel
             // 
             this.rentSearchEmailLabel.AutoSize = true;
-            this.rentSearchEmailLabel.Location = new System.Drawing.Point(265, 5);
+            this.rentSearchEmailLabel.Location = new System.Drawing.Point(283, 5);
             this.rentSearchEmailLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchEmailLabel.Name = "rentSearchEmailLabel";
             this.rentSearchEmailLabel.Size = new System.Drawing.Size(58, 20);
@@ -158,7 +185,7 @@
             // rentSearchCustomerSurameLabel
             // 
             this.rentSearchCustomerSurameLabel.AutoSize = true;
-            this.rentSearchCustomerSurameLabel.Location = new System.Drawing.Point(134, 5);
+            this.rentSearchCustomerSurameLabel.Location = new System.Drawing.Point(143, 5);
             this.rentSearchCustomerSurameLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchCustomerSurameLabel.Name = "rentSearchCustomerSurameLabel";
             this.rentSearchCustomerSurameLabel.Size = new System.Drawing.Size(90, 20);
@@ -171,22 +198,22 @@
             this.rentSearchIdLabel.Location = new System.Drawing.Point(3, 5);
             this.rentSearchIdLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchIdLabel.Name = "rentSearchIdLabel";
-            this.rentSearchIdLabel.Size = new System.Drawing.Size(79, 33);
+            this.rentSearchIdLabel.Size = new System.Drawing.Size(126, 20);
             this.rentSearchIdLabel.TabIndex = 1;
             this.rentSearchIdLabel.Text = "RENT NUMBER";
             // 
-            // rentSearchIdTextBox
+            // tbRentId
             // 
-            this.rentSearchIdTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchIdTextBox.Location = new System.Drawing.Point(3, 41);
-            this.rentSearchIdTextBox.Name = "rentSearchIdTextBox";
-            this.rentSearchIdTextBox.Size = new System.Drawing.Size(125, 26);
-            this.rentSearchIdTextBox.TabIndex = 5;
+            this.tbRentId.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbRentId.Location = new System.Drawing.Point(3, 41);
+            this.tbRentId.Name = "tbRentId";
+            this.tbRentId.Size = new System.Drawing.Size(134, 26);
+            this.tbRentId.TabIndex = 5;
             // 
             // rentSearchDateFromLabel
             // 
             this.rentSearchDateFromLabel.AutoSize = true;
-            this.rentSearchDateFromLabel.Location = new System.Drawing.Point(658, 5);
+            this.rentSearchDateFromLabel.Location = new System.Drawing.Point(703, 5);
             this.rentSearchDateFromLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchDateFromLabel.Name = "rentSearchDateFromLabel";
             this.rentSearchDateFromLabel.Size = new System.Drawing.Size(103, 20);
@@ -196,47 +223,65 @@
             // rentSearchDateToPickerLabel
             // 
             this.rentSearchDateToPickerLabel.AutoSize = true;
-            this.rentSearchDateToPickerLabel.Location = new System.Drawing.Point(789, 5);
+            this.rentSearchDateToPickerLabel.Location = new System.Drawing.Point(843, 5);
             this.rentSearchDateToPickerLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchDateToPickerLabel.Name = "rentSearchDateToPickerLabel";
             this.rentSearchDateToPickerLabel.Size = new System.Drawing.Size(77, 20);
             this.rentSearchDateToPickerLabel.TabIndex = 12;
             this.rentSearchDateToPickerLabel.Text = "DATE TO";
             // 
-            // rentSearchLicenceTextBox
+            // tbLicence
             // 
-            this.rentSearchLicenceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchLicenceTextBox.Location = new System.Drawing.Point(527, 41);
-            this.rentSearchLicenceTextBox.Name = "rentSearchLicenceTextBox";
-            this.rentSearchLicenceTextBox.Size = new System.Drawing.Size(125, 26);
-            this.rentSearchLicenceTextBox.TabIndex = 9;
+            this.tbLicence.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbLicence.Location = new System.Drawing.Point(563, 41);
+            this.tbLicence.Name = "tbLicence";
+            this.tbLicence.Size = new System.Drawing.Size(134, 26);
+            this.tbLicence.TabIndex = 9;
             // 
-            // rentSearchDateFromPicker
+            // dtpFrom
             // 
-            this.rentSearchDateFromPicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchDateFromPicker.Location = new System.Drawing.Point(658, 41);
-            this.rentSearchDateFromPicker.Name = "rentSearchDateFromPicker";
-            this.rentSearchDateFromPicker.Size = new System.Drawing.Size(125, 26);
-            this.rentSearchDateFromPicker.TabIndex = 11;
+            this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpFrom.Location = new System.Drawing.Point(703, 41);
+            this.dtpFrom.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.dtpFrom.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(134, 26);
+            this.dtpFrom.TabIndex = 11;
+            this.dtpFrom.Value = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             // 
-            // rentSearchDateToPicker
+            // dtpTo
             // 
-            this.rentSearchDateToPicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rentSearchDateToPicker.Location = new System.Drawing.Point(789, 41);
-            this.rentSearchDateToPicker.Name = "rentSearchDateToPicker";
-            this.rentSearchDateToPicker.Size = new System.Drawing.Size(128, 26);
-            this.rentSearchDateToPicker.TabIndex = 13;
+            this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpTo.Location = new System.Drawing.Point(843, 41);
+            this.dtpTo.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.dtpTo.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(132, 26);
+            this.dtpTo.TabIndex = 13;
+            // 
+            // dgvRent
+            // 
+            this.dgvRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvRent.Location = new System.Drawing.Point(0, 0);
+            this.dgvRent.Name = "dgvRent";
+            this.dgvRent.RowHeadersWidth = 62;
+            this.dgvRent.RowTemplate.Height = 28;
+            this.dgvRent.Size = new System.Drawing.Size(978, 312);
+            this.dgvRent.TabIndex = 5;
             // 
             // UserControlRentManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvRent);
             this.Controls.Add(this.rentWorkspace);
             this.Name = "UserControlRentManager";
-            this.Size = new System.Drawing.Size(920, 529);
+            this.Size = new System.Drawing.Size(978, 608);
             this.rentWorkspace.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -246,19 +291,22 @@
         private System.Windows.Forms.Panel rentWorkspace;
         private System.Windows.Forms.Button rentSearchButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TextBox rentSearchCustomerSurnameTextBox;
-        private System.Windows.Forms.TextBox rentSearchPhoneTextBox;
-        private System.Windows.Forms.TextBox rentSearchEmailTextBox;
+        private System.Windows.Forms.TextBox tbRentSurname;
+        private System.Windows.Forms.TextBox tbPhone;
+        private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Label rentSearchLicenceLabel;
         private System.Windows.Forms.Label rentSearchPhoneLabel;
         private System.Windows.Forms.Label rentSearchEmailLabel;
         private System.Windows.Forms.Label rentSearchCustomerSurameLabel;
         private System.Windows.Forms.Label rentSearchIdLabel;
-        private System.Windows.Forms.TextBox rentSearchIdTextBox;
+        private System.Windows.Forms.TextBox tbRentId;
         private System.Windows.Forms.Label rentSearchDateFromLabel;
         private System.Windows.Forms.Label rentSearchDateToPickerLabel;
-        private System.Windows.Forms.TextBox rentSearchLicenceTextBox;
-        private System.Windows.Forms.DateTimePicker rentSearchDateFromPicker;
-        private System.Windows.Forms.DateTimePicker rentSearchDateToPicker;
+        private System.Windows.Forms.TextBox tbLicence;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.Button btnGiveBack;
+        private System.Windows.Forms.Button btnNewRent;
+        private System.Windows.Forms.DataGridView dgvRent;
     }
 }

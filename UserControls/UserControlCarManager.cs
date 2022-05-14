@@ -1,19 +1,14 @@
 ﻿using CarRental.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRental
 {
     public partial class UserControlCarManager : UserControl
     {
-        public static RentalEntities DB { get; set; }
         public static bool AddEditIsOpen { get; set; }
         //private IList<int> ratesCollection;
         //private IList<int> yearsCollection;
@@ -21,7 +16,6 @@ namespace CarRental
         {
             InitializeComponent();
             AddEditIsOpen = false;
-            DB = new RentalEntities();
 
             //ratesCollection = new List<int>();
 
@@ -69,7 +63,7 @@ namespace CarRental
                     try
                     {
                         selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
-                        var selectedCar = DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
+                        var selectedCar = FormLogin.DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
                         carAddEdit = new CarAddEdit(selectedCar);
                         carAddEdit.StartPosition = FormStartPosition.CenterScreen;
                         carAddEdit.Show();
@@ -84,7 +78,7 @@ namespace CarRental
         }
         private void btnShowCars_Click(object sender, EventArgs e)
         {
-            var data = from c in DB.Cars
+            var data = from c in FormLogin.DB.Cars
                        select new { ID = c.id, CAR = c.year + " " + c.manufacturer + " " + c.model, INSURANCE = c.insurance, RATE = c.daily_rate };
 
             try
@@ -108,7 +102,7 @@ namespace CarRental
             var yearFrom = Convert.ToInt32(cbYearFrom.Text);
             var yearTo = Convert.ToInt32(cbYearTo.Text);
 
-            var data = from c in DB.Cars
+            var data = from c in FormLogin.DB.Cars
                        where c.manufacturer.ToUpper().Contains(manufacturer)
                        where c.model.ToUpper().Contains(model)
                        where c.daily_rate >= dailyRateFrom && c.daily_rate <= dailyRateTo
@@ -147,11 +141,11 @@ namespace CarRental
 
             foreach (var item in data)
             {
-                var carToDelete = DB.Cars.Where(c => c.id == item).FirstOrDefault();
-                DB.Cars.Remove(carToDelete); 
+                var carToDelete = FormLogin.DB.Cars.Where(c => c.id == item).FirstOrDefault();
+                FormLogin.DB.Cars.Remove(carToDelete); 
             }
 
-            DB.SaveChanges();
+            FormLogin.DB.SaveChanges();
             btnShowCars.PerformClick();
         }
 
