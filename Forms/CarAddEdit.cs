@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRental.Forms
@@ -27,7 +20,6 @@ namespace CarRental.Forms
             this.Text = "Edit";
             editMode = true;
             this.carToEdit = carToEdit;
-
             tbCarManufacturer.Text = carToEdit.manufacturer;
             tbCarModel.Text = carToEdit.model;
             tbVIN.Text = carToEdit.vin;

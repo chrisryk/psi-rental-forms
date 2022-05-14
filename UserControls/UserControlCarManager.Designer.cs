@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvCars = new System.Windows.Forms.DataGridView();
             this.btnSearchCar = new System.Windows.Forms.Button();
             this.btnAddCar = new System.Windows.Forms.Button();
             this.btnEditCar = new System.Windows.Forms.Button();
@@ -51,26 +50,16 @@
             this.cbRateFrom = new System.Windows.Forms.ComboBox();
             this.cbRateTo = new System.Windows.Forms.ComboBox();
             this.lbCarRate = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
+            this.dgvCars = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelCarYear.SuspendLayout();
             this.panelCarRate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvCars
-            // 
-            this.dgvCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCars.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvCars.Location = new System.Drawing.Point(0, 0);
-            this.dgvCars.Name = "dgvCars";
-            this.dgvCars.RowHeadersWidth = 62;
-            this.dgvCars.RowTemplate.Height = 28;
-            this.dgvCars.Size = new System.Drawing.Size(978, 387);
-            this.dgvCars.TabIndex = 0;
             // 
             // btnSearchCar
             // 
-            this.btnSearchCar.Location = new System.Drawing.Point(22, 534);
+            this.btnSearchCar.Location = new System.Drawing.Point(7, 485);
             this.btnSearchCar.Name = "btnSearchCar";
             this.btnSearchCar.Size = new System.Drawing.Size(91, 47);
             this.btnSearchCar.TabIndex = 1;
@@ -134,7 +123,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panelCarRate, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbCarRate, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 387);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 351);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -366,6 +355,17 @@
             this.lbCarRate.TabIndex = 4;
             this.lbCarRate.Text = "DAILY RATE";
             // 
+            // dgvCars
+            // 
+            this.dgvCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCars.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvCars.Location = new System.Drawing.Point(0, 0);
+            this.dgvCars.Name = "dgvCars";
+            this.dgvCars.RowHeadersWidth = 62;
+            this.dgvCars.RowTemplate.Height = 28;
+            this.dgvCars.Size = new System.Drawing.Size(978, 351);
+            this.dgvCars.TabIndex = 0;
+            // 
             // UserControlCarManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -379,20 +379,18 @@
             this.Controls.Add(this.dgvCars);
             this.Name = "UserControlCarManager";
             this.Size = new System.Drawing.Size(978, 608);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panelCarYear.ResumeLayout(false);
             this.panelCarYear.PerformLayout();
             this.panelCarRate.ResumeLayout(false);
             this.panelCarRate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvCars;
         private System.Windows.Forms.Button btnSearchCar;
         private System.Windows.Forms.Button btnAddCar;
         private System.Windows.Forms.Button btnEditCar;
@@ -415,5 +413,6 @@
         private System.Windows.Forms.ComboBox cbRateTo;
         private System.Windows.Forms.ComboBox cbYearFrom;
         private System.Windows.Forms.ComboBox cbYearTo;
+        private System.Windows.Forms.DataGridView dgvCars;
     }
 }

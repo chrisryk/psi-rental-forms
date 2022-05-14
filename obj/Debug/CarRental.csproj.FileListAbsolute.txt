@@ -20,3 +20,4 @@ C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.csproj.CopyComplete
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.exe
 C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.pdb
+C:\Users\Katarzyna Kowalska\Documents\PSI\C#\Projekty\CarRental — ok\obj\Debug\CarRental.Forms.CustomerAddEdit.resources

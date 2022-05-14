@@ -15,14 +15,12 @@ namespace CarRental
     {
         public static RentalEntities DB { get; set; }
         public static bool AddEditIsOpen { get; set; }
-        public static bool SearchIsOpen { get; set; }
         //private IList<int> ratesCollection;
         //private IList<int> yearsCollection;
         public UserControlCarManager()
         {
             InitializeComponent();
             AddEditIsOpen = false;
-            SearchIsOpen = false;
             DB = new RentalEntities();
 
             //ratesCollection = new List<int>();
@@ -63,6 +61,7 @@ namespace CarRental
                     carAddEdit = new CarAddEdit();
                     carAddEdit.StartPosition = FormStartPosition.CenterScreen;
                     carAddEdit.Show();
+                    AddEditIsOpen = true;
                 }
                 else if (value == "EDIT")
                 {

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableCarAdd = new System.Windows.Forms.TableLayoutPanel();
             this.btnCarSave = new System.Windows.Forms.Button();
             this.lbCarManufacturer = new System.Windows.Forms.Label();
             this.lbCarModel = new System.Windows.Forms.Label();
@@ -43,43 +43,43 @@
             this.btnCarCancel = new System.Windows.Forms.Button();
             this.nudCarRate = new System.Windows.Forms.NumericUpDown();
             this.nudCarYear = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableCarAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCarRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCarYear)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tableCarAdd
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Controls.Add(this.btnCarSave, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.lbCarManufacturer, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbCarModel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lbCarYear, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lbCarInsurance, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lbCarVin, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lbCarRate, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tbCarManufacturer, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbCarModel, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbVIN, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.dtpCarInsurance, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnCarCancel, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.nudCarRate, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.nudCarYear, 1, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(662, 540);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableCarAdd.ColumnCount = 2;
+            this.tableCarAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableCarAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableCarAdd.Controls.Add(this.btnCarSave, 1, 6);
+            this.tableCarAdd.Controls.Add(this.lbCarManufacturer, 0, 0);
+            this.tableCarAdd.Controls.Add(this.lbCarModel, 0, 1);
+            this.tableCarAdd.Controls.Add(this.lbCarYear, 0, 2);
+            this.tableCarAdd.Controls.Add(this.lbCarInsurance, 0, 3);
+            this.tableCarAdd.Controls.Add(this.lbCarVin, 0, 4);
+            this.tableCarAdd.Controls.Add(this.lbCarRate, 0, 5);
+            this.tableCarAdd.Controls.Add(this.tbCarManufacturer, 1, 0);
+            this.tableCarAdd.Controls.Add(this.tbCarModel, 1, 1);
+            this.tableCarAdd.Controls.Add(this.tbVIN, 1, 4);
+            this.tableCarAdd.Controls.Add(this.dtpCarInsurance, 1, 3);
+            this.tableCarAdd.Controls.Add(this.btnCarCancel, 0, 6);
+            this.tableCarAdd.Controls.Add(this.nudCarRate, 1, 5);
+            this.tableCarAdd.Controls.Add(this.nudCarYear, 1, 2);
+            this.tableCarAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableCarAdd.Location = new System.Drawing.Point(0, 0);
+            this.tableCarAdd.Name = "tableCarAdd";
+            this.tableCarAdd.RowCount = 7;
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableCarAdd.Size = new System.Drawing.Size(662, 540);
+            this.tableCarAdd.TabIndex = 0;
             // 
             // btnCarSave
             // 
@@ -237,12 +237,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 540);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tableCarAdd);
             this.Name = "CarAddEdit";
             this.Text = "CarAddEdit";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CarAddEdit_FormClosed);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableCarAdd.ResumeLayout(false);
+            this.tableCarAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCarRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCarYear)).EndInit();
             this.ResumeLayout(false);
@@ -251,7 +251,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableCarAdd;
         private System.Windows.Forms.Label lbCarManufacturer;
         private System.Windows.Forms.Label lbCarModel;
         private System.Windows.Forms.Label lbCarYear;

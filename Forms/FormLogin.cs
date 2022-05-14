@@ -12,9 +12,11 @@ namespace CarRental
 {
     public partial class FormLogin : Form
     {
+        public static RentalEntities DB;
         public FormLogin()
         {
             InitializeComponent();
+            DB = new RentalEntities();
         }
 
         private void showPasswordLabel_Click(object sender, EventArgs e)
