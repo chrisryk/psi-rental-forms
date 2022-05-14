@@ -8,10 +8,11 @@
     <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="year" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
-    <Property Name="insurance" Type="DateTime" Precision="3" />
+    <Property Name="insurance" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="vin" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="daily_rate" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
     <NavigationProperty Name="Rents" Relationship="Self.FK_Rent_Car" FromRole="Cars" ToRole="Rents" />
+    <Property Name="rented" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
@@ -42,7 +43,7 @@
     <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="car_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="date_start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="date_start" Type="DateTime" Precision="3" />
     <Property Name="date_back" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Cars" Relationship="Self.FK_Rent_Car" FromRole="Rents" ToRole="Cars" />
     <NavigationProperty Name="Customers" Relationship="Self.FK_Rent_Customer" FromRole="Rents" ToRole="Customers" />

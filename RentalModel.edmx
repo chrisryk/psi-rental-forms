@@ -13,9 +13,10 @@
           <Property Name="manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="year" Type="numeric" Precision="4" Scale="0" Nullable="false" />
-          <Property Name="insurance" Type="datetime" />
+          <Property Name="insurance" Type="datetime" Nullable="false" />
           <Property Name="vin" Type="varchar" MaxLength="17" Nullable="false" />
           <Property Name="daily_rate" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="rented" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -44,7 +45,7 @@
           <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="car_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="date_start" Type="datetime" Nullable="false" />
+          <Property Name="date_start" Type="datetime" />
           <Property Name="date_back" Type="datetime" />
         </EntityType>
         <EntityType Name="Roles">
@@ -85,30 +86,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rent_Car">
-          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
-          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cars">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Rents">
-              <PropertyRef Name="car_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rent_Customer">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
-          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customers">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Rents">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Roles_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Roles1" Type="Self.Roles" Multiplicity="0..1" />
@@ -145,14 +122,6 @@
             <End Role="Rents" EntitySet="Rents" />
             <End Role="Invoices" EntitySet="Invoices" />
           </AssociationSet>
-          <AssociationSet Name="FK_Rent_Car" Association="Self.FK_Rent_Car">
-            <End Role="Cars" EntitySet="Cars" />
-            <End Role="Rents" EntitySet="Rents" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rent_Customer" Association="Self.FK_Rent_Customer">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="Rents" EntitySet="Rents" />
-          </AssociationSet>
           <AssociationSet Name="FK_Roles_Roles" Association="Self.FK_Roles_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Roles1" EntitySet="Roles" />
@@ -174,10 +143,11 @@
           <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="year" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
-          <Property Name="insurance" Type="DateTime" Precision="3" />
+          <Property Name="insurance" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="vin" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="daily_rate" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
           <NavigationProperty Name="Rents" Relationship="Self.FK_Rent_Car" FromRole="Cars" ToRole="Rents" />
+          <Property Name="rented" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -208,7 +178,7 @@
           <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="car_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="date_start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_start" Type="DateTime" Precision="3" />
           <Property Name="date_back" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Cars" Relationship="Self.FK_Rent_Car" FromRole="Rents" ToRole="Cars" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Rent_Customer" FromRole="Rents" ToRole="Customers" />
@@ -342,6 +312,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="RentalModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="rented" ColumnName="rented" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
                 <ScalarProperty Name="model" ColumnName="model" />

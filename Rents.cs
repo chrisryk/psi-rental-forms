@@ -23,7 +23,7 @@ namespace CarRental
         public decimal id { get; set; }
         public decimal customer_id { get; set; }
         public decimal car_id { get; set; }
-        public System.DateTime date_start { get; set; }
+        public Nullable<System.DateTime> date_start { get; set; }
         public Nullable<System.DateTime> date_back { get; set; }
     
         public virtual Cars Cars { get; set; }

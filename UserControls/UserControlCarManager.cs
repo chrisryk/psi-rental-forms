@@ -10,24 +10,14 @@ namespace CarRental
     public partial class UserControlCarManager : UserControl
     {
         public static bool AddEditIsOpen { get; set; }
-        //private IList<int> ratesCollection;
         //private IList<int> yearsCollection;
         public UserControlCarManager()
         {
             InitializeComponent();
             AddEditIsOpen = false;
 
-            //ratesCollection = new List<int>();
-
-            //for (int i = 50; i <= 500; i += 50)
-            //{
-            //    ratesCollection.Add(i.ToString());
-            //}
-
-            //cbRateFrom.DataSource = ratesCollection;
-            cbRateFrom.SelectedIndex = 0;
-            //cbRateTo.DataSource = ratesCollection;
-            cbRateTo.SelectedIndex = cbRateTo.Items.Count - 1;
+            cbRateFrom.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Min();
+            cbRateTo.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Max();
 
             //yearsCollection = new List<int>();
 
@@ -124,9 +114,9 @@ namespace CarRental
 
         private void btnDeleteCar_Click(object sender, EventArgs e)
         {
-            var data = GetIndexes(dgvCars.SelectedRows);
+            var selectedCarIds = GetIndexes(dgvCars.SelectedRows);
 
-            if (data.Count() == 0)
+            if (selectedCarIds.Count() == 0)
             {
                 MessageBox.Show("Select car to delete.", "Info");
                 return;
@@ -139,14 +129,37 @@ namespace CarRental
                 return;
             }
 
-            foreach (var item in data)
+            foreach (var item in selectedCarIds)
             {
                 var carToDelete = FormLogin.DB.Cars.Where(c => c.id == item).FirstOrDefault();
                 FormLogin.DB.Cars.Remove(carToDelete); 
             }
 
-            FormLogin.DB.SaveChanges();
-            btnShowCars.PerformClick();
+            try
+            {
+                FormLogin.DB.SaveChanges();
+            }
+            catch
+            {
+                var userSecondAnswer = MessageBox.Show("Removing this item will result rents and invoices removal, proceed?", "Warning!", MessageBoxButtons.YesNo);
+
+                if (userSecondAnswer == DialogResult.Yes)
+                {
+                    foreach (var id in selectedCarIds)
+                    {
+                        var rentsToDelete = FormLogin.DB.Rents.Where(r => r.car_id == id).Select(r => r.id);
+                        foreach (var rent in rentsToDelete)
+                        {
+                            var rentTodelete = FormLogin.DB.Rents.Where(r => r.id == rent).FirstOrDefault();
+                            FormLogin.DB.Rents.Remove(rentTodelete);
+                        }
+
+                        var carToDelete = FormLogin.DB.Cars.Where(c => c.id == id).FirstOrDefault();
+                        FormLogin.DB.Cars.Remove(carToDelete);
+                    }
+                    FormLogin.DB.SaveChanges();
+                }
+            }
         }
 
         private IEnumerable<int> GetIndexes(DataGridViewSelectedRowCollection data)

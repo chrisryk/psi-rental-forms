@@ -36,9 +36,7 @@ namespace CarRental.Forms
             selectedManufacturer = cbCarManufacturer.SelectedValue.ToString();
 
             var carData = from c in FormLogin.DB.Cars
-                          join r in FormLogin.DB.Rents
-                          on c.id equals r.car_id
-                          where r.date_back != null
+                          where c.rented == false
                           where c.manufacturer == selectedManufacturer
                           select c.model;
 
@@ -75,9 +73,11 @@ namespace CarRental.Forms
             selectedLicence = cbCustomerLicence.SelectedValue.ToString();
 
             Rents rent = new Rents();
-            rent.car_id = (int)FormLogin.DB.Cars.Where(c => c.manufacturer == selectedManufacturer && c.model == selectedModel)
+
+            var carId = (int)FormLogin.DB.Cars.Where(c => c.manufacturer == selectedManufacturer && c.model == selectedModel)
                                                 .Select(c => c.id)
                                                 .FirstOrDefault();
+            rent.car_id = carId;
             rent.customer_id = (int)FormLogin.DB.Customers.Where(c => c.licence == selectedLicence)
                                                      .Select(c => c.id)
                                                      .FirstOrDefault();
@@ -93,6 +93,9 @@ namespace CarRental.Forms
             }
 
             FormLogin.DB.Rents.Add(rent);
+
+            FormLogin.DB.Cars.Where(c => c.id == carId).FirstOrDefault().rented = true;
+
             FormLogin.DB.SaveChanges();
             MessageBox.Show("Rent added.", "Info!");
             this.Close();

@@ -24,9 +24,10 @@ namespace CarRental
         public string manufacturer { get; set; }
         public string model { get; set; }
         public decimal year { get; set; }
-        public Nullable<System.DateTime> insurance { get; set; }
+        public System.DateTime insurance { get; set; }
         public string vin { get; set; }
         public decimal daily_rate { get; set; }
+        public bool rented { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rents> Rents { get; set; }

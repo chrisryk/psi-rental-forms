@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Cars">
       <EntityTypeMapping TypeName="RentalModel.Cars">
         <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="rented" ColumnName="rented" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
           <ScalarProperty Name="model" ColumnName="model" />

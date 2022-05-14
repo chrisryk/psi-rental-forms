@@ -47,14 +47,16 @@
             this.panelCarRate = new System.Windows.Forms.TableLayoutPanel();
             this.lbCarRateTo = new System.Windows.Forms.Label();
             this.lbCarRateFrom = new System.Windows.Forms.Label();
-            this.cbRateFrom = new System.Windows.Forms.ComboBox();
-            this.cbRateTo = new System.Windows.Forms.ComboBox();
             this.lbCarRate = new System.Windows.Forms.Label();
             this.dgvCars = new System.Windows.Forms.DataGridView();
+            this.cbRateFrom = new System.Windows.Forms.NumericUpDown();
+            this.cbRateTo = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelCarYear.SuspendLayout();
             this.panelCarRate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRateFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRateTo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearchCar
@@ -272,10 +274,10 @@
             this.panelCarRate.ColumnCount = 2;
             this.panelCarRate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panelCarRate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelCarRate.Controls.Add(this.lbCarRateTo, 0, 1);
-            this.panelCarRate.Controls.Add(this.lbCarRateFrom, 0, 0);
-            this.panelCarRate.Controls.Add(this.cbRateFrom, 1, 0);
             this.panelCarRate.Controls.Add(this.cbRateTo, 1, 1);
+            this.panelCarRate.Controls.Add(this.lbCarRateTo, 0, 1);
+            this.panelCarRate.Controls.Add(this.cbRateFrom, 1, 0);
+            this.panelCarRate.Controls.Add(this.lbCarRateFrom, 0, 0);
             this.panelCarRate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCarRate.Location = new System.Drawing.Point(491, 41);
             this.panelCarRate.Name = "panelCarRate";
@@ -305,46 +307,6 @@
             this.lbCarRateFrom.TabIndex = 10;
             this.lbCarRateFrom.Text = "FROM";
             // 
-            // cbRateFrom
-            // 
-            this.cbRateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbRateFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRateFrom.FormattingEnabled = true;
-            this.cbRateFrom.Items.AddRange(new object[] {
-            "100",
-            "150",
-            "200",
-            "250",
-            "300",
-            "350",
-            "400",
-            "450",
-            "500"});
-            this.cbRateFrom.Location = new System.Drawing.Point(122, 3);
-            this.cbRateFrom.Name = "cbRateFrom";
-            this.cbRateFrom.Size = new System.Drawing.Size(113, 28);
-            this.cbRateFrom.TabIndex = 12;
-            // 
-            // cbRateTo
-            // 
-            this.cbRateTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbRateTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRateTo.FormattingEnabled = true;
-            this.cbRateTo.Items.AddRange(new object[] {
-            "100",
-            "150",
-            "200",
-            "250",
-            "300",
-            "350",
-            "400",
-            "450",
-            "500"});
-            this.cbRateTo.Location = new System.Drawing.Point(122, 45);
-            this.cbRateTo.Name = "cbRateTo";
-            this.cbRateTo.Size = new System.Drawing.Size(113, 28);
-            this.cbRateTo.TabIndex = 13;
-            // 
             // lbCarRate
             // 
             this.lbCarRate.AutoSize = true;
@@ -366,6 +328,30 @@
             this.dgvCars.Size = new System.Drawing.Size(978, 351);
             this.dgvCars.TabIndex = 0;
             // 
+            // cbRateFrom
+            // 
+            this.cbRateFrom.Location = new System.Drawing.Point(122, 3);
+            this.cbRateFrom.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cbRateFrom.Name = "cbRateFrom";
+            this.cbRateFrom.Size = new System.Drawing.Size(113, 26);
+            this.cbRateFrom.TabIndex = 7;
+            // 
+            // cbRateTo
+            // 
+            this.cbRateTo.Location = new System.Drawing.Point(122, 45);
+            this.cbRateTo.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cbRateTo.Name = "cbRateTo";
+            this.cbRateTo.Size = new System.Drawing.Size(113, 26);
+            this.cbRateTo.TabIndex = 8;
+            // 
             // UserControlCarManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -386,6 +372,8 @@
             this.panelCarRate.ResumeLayout(false);
             this.panelCarRate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRateFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRateTo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,10 +397,10 @@
         private System.Windows.Forms.Label lbCarRateTo;
         private System.Windows.Forms.Label lbCarRateFrom;
         private System.Windows.Forms.Label lbCarRate;
-        private System.Windows.Forms.ComboBox cbRateFrom;
-        private System.Windows.Forms.ComboBox cbRateTo;
         private System.Windows.Forms.ComboBox cbYearFrom;
         private System.Windows.Forms.ComboBox cbYearTo;
         private System.Windows.Forms.DataGridView dgvCars;
+        private System.Windows.Forms.NumericUpDown cbRateTo;
+        private System.Windows.Forms.NumericUpDown cbRateFrom;
     }
 }
