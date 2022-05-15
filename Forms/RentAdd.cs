@@ -49,6 +49,31 @@ namespace CarRental.Forms
                 cbCarModel.DataSource = carData.Distinct().ToList();
             }
         }
+        private void cbCarModel_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbCarModel.SelectedValue == null)
+            {
+                cbVin.DataSource = null;
+                return;
+            }
+
+            selectedModel = cbCarModel.SelectedValue.ToString();
+
+            var carData = from c in FormLogin.DB.Cars
+                          where c.manufacturer == selectedManufacturer
+                          where c.model == selectedModel
+                          where c.rented == false
+                          select c.vin;
+
+            if (carData.Count() == 0)
+            {
+                cbVin.DataSource = null;
+            }
+            else
+            {
+                cbVin.DataSource = carData.Distinct().ToList();
+            }
+        }
 
         private void cbCustomerSurname_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -69,7 +94,6 @@ namespace CarRental.Forms
 
         private void btnRentSave_Click(object sender, EventArgs e)
         {
-            selectedModel = cbCarModel.SelectedValue.ToString();
             selectedLicence = cbCustomerLicence.SelectedValue.ToString();
 
             Rents rent = new Rents();

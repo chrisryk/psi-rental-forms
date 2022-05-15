@@ -45,18 +45,18 @@
             this.cbYearFrom = new System.Windows.Forms.ComboBox();
             this.cbYearTo = new System.Windows.Forms.ComboBox();
             this.panelCarRate = new System.Windows.Forms.TableLayoutPanel();
+            this.cbRateTo = new System.Windows.Forms.NumericUpDown();
             this.lbCarRateTo = new System.Windows.Forms.Label();
+            this.cbRateFrom = new System.Windows.Forms.NumericUpDown();
             this.lbCarRateFrom = new System.Windows.Forms.Label();
             this.lbCarRate = new System.Windows.Forms.Label();
             this.dgvCars = new System.Windows.Forms.DataGridView();
-            this.cbRateFrom = new System.Windows.Forms.NumericUpDown();
-            this.cbRateTo = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelCarYear.SuspendLayout();
             this.panelCarRate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRateFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbRateTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRateFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearchCar
@@ -287,6 +287,18 @@
             this.panelCarRate.Size = new System.Drawing.Size(238, 84);
             this.panelCarRate.TabIndex = 12;
             // 
+            // cbRateTo
+            // 
+            this.cbRateTo.Location = new System.Drawing.Point(122, 45);
+            this.cbRateTo.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cbRateTo.Name = "cbRateTo";
+            this.cbRateTo.Size = new System.Drawing.Size(113, 26);
+            this.cbRateTo.TabIndex = 8;
+            // 
             // lbCarRateTo
             // 
             this.lbCarRateTo.AutoSize = true;
@@ -296,6 +308,18 @@
             this.lbCarRateTo.Size = new System.Drawing.Size(30, 20);
             this.lbCarRateTo.TabIndex = 11;
             this.lbCarRateTo.Text = "TO";
+            // 
+            // cbRateFrom
+            // 
+            this.cbRateFrom.Location = new System.Drawing.Point(122, 3);
+            this.cbRateFrom.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cbRateFrom.Name = "cbRateFrom";
+            this.cbRateFrom.Size = new System.Drawing.Size(113, 26);
+            this.cbRateFrom.TabIndex = 7;
             // 
             // lbCarRateFrom
             // 
@@ -328,30 +352,6 @@
             this.dgvCars.Size = new System.Drawing.Size(978, 351);
             this.dgvCars.TabIndex = 0;
             // 
-            // cbRateFrom
-            // 
-            this.cbRateFrom.Location = new System.Drawing.Point(122, 3);
-            this.cbRateFrom.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.cbRateFrom.Name = "cbRateFrom";
-            this.cbRateFrom.Size = new System.Drawing.Size(113, 26);
-            this.cbRateFrom.TabIndex = 7;
-            // 
-            // cbRateTo
-            // 
-            this.cbRateTo.Location = new System.Drawing.Point(122, 45);
-            this.cbRateTo.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.cbRateTo.Name = "cbRateTo";
-            this.cbRateTo.Size = new System.Drawing.Size(113, 26);
-            this.cbRateTo.TabIndex = 8;
-            // 
             // UserControlCarManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -371,9 +371,9 @@
             this.panelCarYear.PerformLayout();
             this.panelCarRate.ResumeLayout(false);
             this.panelCarRate.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRateFrom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbRateTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRateFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
             this.ResumeLayout(false);
 
         }

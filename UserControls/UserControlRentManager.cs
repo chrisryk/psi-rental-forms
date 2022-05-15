@@ -30,12 +30,25 @@ namespace CarRental
         }
         private void btnGiveBack_Click(object sender, EventArgs e)
         {
-            if (!AddEditIsOpen)
+            if (!AddEditIsOpen && dgvRent.SelectedRows.Count == 1)
             {
-                RentBack rentBack = new RentBack();
+                var selectedRentId = Convert.ToInt32(dgvRent.SelectedRows[0].Cells["RENT_ID"].Value);
+                var selectedRent = FormLogin.DB.Rents.Where(r => r.id == selectedRentId).FirstOrDefault();
+
+                if (selectedRent.date_back != null)
+                {
+                    MessageBox.Show("Car is back already.", "Info!");
+                    return;
+                }
+
+                RentBack rentBack = new RentBack(selectedRent);
                 rentBack.StartPosition = FormStartPosition.CenterScreen;
                 rentBack.Show();
                 AddEditIsOpen = true;
+            }
+            else if (!AddEditIsOpen && dgvRent.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Select only one rent.", "Info!");
             }
         }
         private void rentSearchButton_Click(object sender, EventArgs e)

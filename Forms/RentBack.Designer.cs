@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpReturnDate = new System.Windows.Forms.DateTimePicker();
             this.lbRentBack = new System.Windows.Forms.Label();
             this.tableCarAdd = new System.Windows.Forms.TableLayoutPanel();
             this.btnCarSave = new System.Windows.Forms.Button();
@@ -36,13 +36,13 @@
             this.tableCarAdd.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dtpReturnDate
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker1.Location = new System.Drawing.Point(310, 55);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dtpReturnDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpReturnDate.Location = new System.Drawing.Point(310, 55);
+            this.dtpReturnDate.Name = "dtpReturnDate";
+            this.dtpReturnDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpReturnDate.TabIndex = 0;
             // 
             // lbRentBack
             // 
@@ -62,7 +62,7 @@
             this.tableCarAdd.Controls.Add(this.btnCarSave, 1, 1);
             this.tableCarAdd.Controls.Add(this.lbRentBack, 0, 0);
             this.tableCarAdd.Controls.Add(this.btnCarCancel, 0, 1);
-            this.tableCarAdd.Controls.Add(this.dateTimePicker1, 1, 0);
+            this.tableCarAdd.Controls.Add(this.dtpReturnDate, 1, 0);
             this.tableCarAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableCarAdd.Location = new System.Drawing.Point(0, 0);
             this.tableCarAdd.Name = "tableCarAdd";
@@ -81,6 +81,7 @@
             this.btnCarSave.TabIndex = 16;
             this.btnCarSave.Text = "SAVE";
             this.btnCarSave.UseVisualStyleBackColor = true;
+            this.btnCarSave.Click += new System.EventHandler(this.btnCarSave_Click);
             // 
             // btnCarCancel
             // 
@@ -110,7 +111,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpReturnDate;
         private System.Windows.Forms.Label lbRentBack;
         private System.Windows.Forms.TableLayoutPanel tableCarAdd;
         private System.Windows.Forms.Button btnCarSave;

@@ -40,6 +40,7 @@
             this.cbCarModel = new System.Windows.Forms.ComboBox();
             this.cbCustomerName = new System.Windows.Forms.ComboBox();
             this.cbCustomerLicence = new System.Windows.Forms.ComboBox();
+            this.cbVin = new System.Windows.Forms.ComboBox();
             this.tableRentAdd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,6 +123,7 @@
             this.tableRentAdd.Controls.Add(this.btnRentSave, 3, 3);
             this.tableRentAdd.Controls.Add(this.cbCustomerName, 2, 0);
             this.tableRentAdd.Controls.Add(this.cbCustomerLicence, 3, 0);
+            this.tableRentAdd.Controls.Add(this.cbVin, 3, 1);
             this.tableRentAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableRentAdd.Location = new System.Drawing.Point(0, 0);
             this.tableRentAdd.Name = "tableRentAdd";
@@ -161,6 +163,7 @@
             this.cbCarModel.Name = "cbCarModel";
             this.cbCarModel.Size = new System.Drawing.Size(159, 28);
             this.cbCarModel.TabIndex = 19;
+            this.cbCarModel.SelectedValueChanged += new System.EventHandler(this.cbCarModel_SelectedValueChanged);
             // 
             // cbCustomerName
             // 
@@ -180,6 +183,15 @@
             this.cbCustomerLicence.Name = "cbCustomerLicence";
             this.cbCustomerLicence.Size = new System.Drawing.Size(159, 28);
             this.cbCustomerLicence.TabIndex = 21;
+            // 
+            // cbVin
+            // 
+            this.cbVin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbVin.FormattingEnabled = true;
+            this.cbVin.Location = new System.Drawing.Point(498, 188);
+            this.cbVin.Name = "cbVin";
+            this.cbVin.Size = new System.Drawing.Size(161, 28);
+            this.cbVin.TabIndex = 22;
             // 
             // RentAdd
             // 
@@ -211,5 +223,6 @@
         private System.Windows.Forms.ComboBox cbCarModel;
         private System.Windows.Forms.ComboBox cbCustomerName;
         private System.Windows.Forms.ComboBox cbCustomerLicence;
+        private System.Windows.Forms.ComboBox cbVin;
     }
 }
