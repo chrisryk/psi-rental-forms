@@ -22,11 +22,11 @@ namespace CarRental.Forms
         }
         private void RentAddEdit_Load(object sender, EventArgs e)
         {
-            cbCustomerSurname.DataSource = FormLogin.DB.Customers.Select(c => c.surname)
+            cbCustomerSurname.DataSource = RentalDatabase.DB.Customers.Select(c => c.surname)
                                                                  .Distinct()
                                                                  .ToList();
 
-            cbCarManufacturer.DataSource = FormLogin.DB.Cars.Select(c => c.manufacturer)
+            cbCarManufacturer.DataSource = RentalDatabase.DB.Cars.Select(c => c.manufacturer)
                                                             .Distinct()
                                                             .ToList();
         }
@@ -35,7 +35,7 @@ namespace CarRental.Forms
         {
             selectedManufacturer = cbCarManufacturer.SelectedValue.ToString();
 
-            var carData = from c in FormLogin.DB.Cars
+            var carData = from c in RentalDatabase.DB.Cars
                           where c.rented == false
                           where c.manufacturer == selectedManufacturer
                           select c.model;
@@ -59,7 +59,7 @@ namespace CarRental.Forms
 
             selectedModel = cbCarModel.SelectedValue.ToString();
 
-            var carData = from c in FormLogin.DB.Cars
+            var carData = from c in RentalDatabase.DB.Cars
                           where c.manufacturer == selectedManufacturer
                           where c.model == selectedModel
                           where c.rented == false
@@ -78,7 +78,7 @@ namespace CarRental.Forms
         private void cbCustomerSurname_SelectedValueChanged(object sender, EventArgs e)
         {
             selectedSurname = cbCustomerSurname.SelectedValue.ToString();
-            cbCustomerName.DataSource = FormLogin.DB.Customers.Where(c => c.surname == selectedSurname)
+            cbCustomerName.DataSource = RentalDatabase.DB.Customers.Where(c => c.surname == selectedSurname)
                                                               .Select(c => c.name)
                                                               .Distinct()
                                                               .ToList();
@@ -87,7 +87,7 @@ namespace CarRental.Forms
         private void cbCustomerName_SelectedValueChanged(object sender, EventArgs e)
         {
             selectedName = cbCustomerName.SelectedValue.ToString();
-            cbCustomerLicence.DataSource = FormLogin.DB.Customers.Where(c => c.surname == selectedSurname && c.name == selectedName)
+            cbCustomerLicence.DataSource = RentalDatabase.DB.Customers.Where(c => c.surname == selectedSurname && c.name == selectedName)
                                                                 .Select(c => c.licence)
                                                                 .ToList();
         }
@@ -98,11 +98,11 @@ namespace CarRental.Forms
 
             Rents rent = new Rents();
 
-            var carId = (int)FormLogin.DB.Cars.Where(c => c.manufacturer == selectedManufacturer && c.model == selectedModel)
+            var carId = (int)RentalDatabase.DB.Cars.Where(c => c.manufacturer == selectedManufacturer && c.model == selectedModel)
                                                 .Select(c => c.id)
                                                 .FirstOrDefault();
             rent.car_id = carId;
-            rent.customer_id = (int)FormLogin.DB.Customers.Where(c => c.licence == selectedLicence)
+            rent.customer_id = (int)RentalDatabase.DB.Customers.Where(c => c.licence == selectedLicence)
                                                      .Select(c => c.id)
                                                      .FirstOrDefault();
             
@@ -116,11 +116,11 @@ namespace CarRental.Forms
                 return;
             }
 
-            FormLogin.DB.Rents.Add(rent);
+            RentalDatabase.DB.Rents.Add(rent);
 
-            FormLogin.DB.Cars.Where(c => c.id == carId).FirstOrDefault().rented = true;
+            RentalDatabase.DB.Cars.Where(c => c.id == carId).FirstOrDefault().rented = true;
 
-            FormLogin.DB.SaveChanges();
+            RentalDatabase.DB.SaveChanges();
             MessageBox.Show("Rent added.", "Info!");
             this.Close();
         }

@@ -18,8 +18,8 @@ namespace CarRental
 
             try
             {
-                cbRateFrom.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Min();
-                cbRateTo.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Max();
+                cbRateFrom.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Min();
+                cbRateTo.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Max();
             }
             catch (Exception e)
             {
@@ -61,7 +61,7 @@ namespace CarRental
                     try
                     {
                         selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
-                        var selectedCar = FormLogin.DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
+                        var selectedCar = RentalDatabase.DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
                         carAddEdit = new CarAddEdit(selectedCar);
                         carAddEdit.StartPosition = FormStartPosition.CenterScreen;
                         carAddEdit.Show();
@@ -76,7 +76,7 @@ namespace CarRental
         }
         private void btnShowCars_Click(object sender, EventArgs e)
         {
-            var data = from c in FormLogin.DB.Cars
+            var data = from c in RentalDatabase.DB.Cars
                        select new { ID = c.id, CAR = c.year + " " + c.manufacturer + " " + c.model, INSURANCE = c.insurance, RATE = c.daily_rate };
 
             try
@@ -100,7 +100,7 @@ namespace CarRental
             var yearFrom = Convert.ToInt32(cbYearFrom.Text);
             var yearTo = Convert.ToInt32(cbYearTo.Text);
 
-            var data = from c in FormLogin.DB.Cars
+            var data = from c in RentalDatabase.DB.Cars
                        where c.manufacturer.ToUpper().Contains(manufacturer)
                        where c.model.ToUpper().Contains(model)
                        where c.daily_rate >= dailyRateFrom && c.daily_rate <= dailyRateTo
@@ -139,13 +139,13 @@ namespace CarRental
 
             foreach (var item in selectedCarIds)
             {
-                var carToDelete = FormLogin.DB.Cars.Where(c => c.id == item).FirstOrDefault();
-                FormLogin.DB.Cars.Remove(carToDelete); 
+                var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == item).FirstOrDefault();
+                RentalDatabase.DB.Cars.Remove(carToDelete); 
             }
 
             try
             {
-                FormLogin.DB.SaveChanges();
+                RentalDatabase.DB.SaveChanges();
             }
             catch
             {
@@ -155,17 +155,17 @@ namespace CarRental
                 {
                     foreach (var id in selectedCarIds)
                     {
-                        var rentsToDelete = FormLogin.DB.Rents.Where(r => r.car_id == id).Select(r => r.id);
+                        var rentsToDelete = RentalDatabase.DB.Rents.Where(r => r.car_id == id).Select(r => r.id);
                         foreach (var rent in rentsToDelete)
                         {
-                            var rentTodelete = FormLogin.DB.Rents.Where(r => r.id == rent).FirstOrDefault();
-                            FormLogin.DB.Rents.Remove(rentTodelete);
+                            var rentTodelete = RentalDatabase.DB.Rents.Where(r => r.id == rent).FirstOrDefault();
+                            RentalDatabase.DB.Rents.Remove(rentTodelete);
                         }
 
-                        var carToDelete = FormLogin.DB.Cars.Where(c => c.id == id).FirstOrDefault();
-                        FormLogin.DB.Cars.Remove(carToDelete);
+                        var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == id).FirstOrDefault();
+                        RentalDatabase.DB.Cars.Remove(carToDelete);
                     }
-                    FormLogin.DB.SaveChanges();
+                    RentalDatabase.DB.SaveChanges();
                 }
             }
         }

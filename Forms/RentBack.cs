@@ -27,8 +27,8 @@ namespace CarRental.Forms
         {
             selectedRent.date_back = dtpReturnDate.Value;
             var returnedCar = selectedRent.car_id;
-            FormLogin.DB.Cars.Where(c => c.id == returnedCar).FirstOrDefault().rented = false;
-            FormLogin.DB.SaveChanges();
+            RentalDatabase.DB.Cars.Where(c => c.id == returnedCar).FirstOrDefault().rented = false;
+            RentalDatabase.DB.SaveChanges();
             MessageBox.Show("Rent updated.", "Info!");
             this.Close();
         }

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.customerWorkspace = new System.Windows.Forms.Panel();
+            this.btnDeleteCustomer = new System.Windows.Forms.Button();
+            this.btnEditCustomer = new System.Windows.Forms.Button();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
             this.btnSearchCustomer = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tbUserSurname = new System.Windows.Forms.TextBox();
@@ -42,9 +45,6 @@
             this.tbUserName = new System.Windows.Forms.TextBox();
             this.tbUserLicence = new System.Windows.Forms.TextBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.btnDeleteCustomer = new System.Windows.Forms.Button();
-            this.btnEditCustomer = new System.Windows.Forms.Button();
-            this.btnAddCustomer = new System.Windows.Forms.Button();
             this.customerWorkspace.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -62,6 +62,36 @@
             this.customerWorkspace.Name = "customerWorkspace";
             this.customerWorkspace.Size = new System.Drawing.Size(978, 259);
             this.customerWorkspace.TabIndex = 3;
+            // 
+            // btnDeleteCustomer
+            // 
+            this.btnDeleteCustomer.Location = new System.Drawing.Point(880, 209);
+            this.btnDeleteCustomer.Name = "btnDeleteCustomer";
+            this.btnDeleteCustomer.Size = new System.Drawing.Size(91, 47);
+            this.btnDeleteCustomer.TabIndex = 7;
+            this.btnDeleteCustomer.Text = "DELETE";
+            this.btnDeleteCustomer.UseVisualStyleBackColor = true;
+            this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
+            // 
+            // btnEditCustomer
+            // 
+            this.btnEditCustomer.Location = new System.Drawing.Point(783, 209);
+            this.btnEditCustomer.Name = "btnEditCustomer";
+            this.btnEditCustomer.Size = new System.Drawing.Size(91, 47);
+            this.btnEditCustomer.TabIndex = 6;
+            this.btnEditCustomer.Text = "EDIT";
+            this.btnEditCustomer.UseVisualStyleBackColor = true;
+            this.btnEditCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.Location = new System.Drawing.Point(686, 209);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(91, 47);
+            this.btnAddCustomer.TabIndex = 5;
+            this.btnAddCustomer.Text = "ADD";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // btnSearchCustomer
             // 
@@ -205,36 +235,6 @@
             this.dgvCustomers.RowTemplate.Height = 28;
             this.dgvCustomers.Size = new System.Drawing.Size(978, 346);
             this.dgvCustomers.TabIndex = 4;
-            // 
-            // btnDeleteCustomer
-            // 
-            this.btnDeleteCustomer.Location = new System.Drawing.Point(880, 209);
-            this.btnDeleteCustomer.Name = "btnDeleteCustomer";
-            this.btnDeleteCustomer.Size = new System.Drawing.Size(91, 47);
-            this.btnDeleteCustomer.TabIndex = 7;
-            this.btnDeleteCustomer.Text = "DELETE";
-            this.btnDeleteCustomer.UseVisualStyleBackColor = true;
-            this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
-            // 
-            // btnEditCustomer
-            // 
-            this.btnEditCustomer.Location = new System.Drawing.Point(783, 209);
-            this.btnEditCustomer.Name = "btnEditCustomer";
-            this.btnEditCustomer.Size = new System.Drawing.Size(91, 47);
-            this.btnEditCustomer.TabIndex = 6;
-            this.btnEditCustomer.Text = "EDIT";
-            this.btnEditCustomer.UseVisualStyleBackColor = true;
-            this.btnEditCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
-            // 
-            // btnAddCustomer
-            // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(686, 209);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(91, 47);
-            this.btnAddCustomer.TabIndex = 5;
-            this.btnAddCustomer.Text = "ADD";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // UserControlCustomerManager
             // 

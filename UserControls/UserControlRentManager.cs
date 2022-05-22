@@ -33,7 +33,7 @@ namespace CarRental
             if (!AddEditIsOpen && dgvRent.SelectedRows.Count == 1)
             {
                 var selectedRentId = Convert.ToInt32(dgvRent.SelectedRows[0].Cells["RENT_ID"].Value);
-                var selectedRent = FormLogin.DB.Rents.Where(r => r.id == selectedRentId).FirstOrDefault();
+                var selectedRent = RentalDatabase.DB.Rents.Where(r => r.id == selectedRentId).FirstOrDefault();
 
                 if (selectedRent.date_back != null)
                 {
@@ -61,10 +61,10 @@ namespace CarRental
             var dateFrom = dtpFrom.Value;
             var dateTo = dtpTo.Value;
 
-            var rentData = from r in FormLogin.DB.Rents
-                           join cr in FormLogin.DB.Cars
+            var rentData = from r in RentalDatabase.DB.Rents
+                           join cr in RentalDatabase.DB.Cars
                            on r.car_id equals cr.id
-                           join cu in FormLogin.DB.Customers
+                           join cu in RentalDatabase.DB.Customers
                            on r.customer_id equals cu.id
                            where cu.surname.Contains(surname)
                            where cu.email.Contains(email)

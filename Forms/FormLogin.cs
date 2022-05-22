@@ -6,11 +6,11 @@ namespace CarRental
 {
     public partial class FormLogin : Form
     {
-        public static RentalEntities DB;
+        //public static RentalEntities DB;
         public FormLogin()
         {
             InitializeComponent();
-            DB = new RentalEntities();
+            //DB = new RentalEntities();
         }
 
         private void showPasswordLabel_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace CarRental
             string userPassword = passwordTextBox.Text;
             string userName = usernameTextBox.Text;
 
-            var userData = DB.Users.Where(u => u.name == userName && u.password == userPassword).Count();
+            var userData = RentalDatabase.DB.Users.Where(u => u.name == userName && u.password == userPassword).Count();
             
             if (userData > 0)
             {

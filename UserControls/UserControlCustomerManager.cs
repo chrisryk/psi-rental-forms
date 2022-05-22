@@ -24,7 +24,7 @@ namespace CarRental
             var userPhone = tbUserPhone.Text;
             var userLicence = tbUserLicence.Text.ToUpper();
 
-            var customersData = from c in FormLogin.DB.Customers
+            var customersData = from c in RentalDatabase.DB.Customers
                                 where c.name.Contains(userName)
                                 where c.surname.Contains(userSurname)
                                 where c.email.Contains(userEmail)
@@ -57,7 +57,7 @@ namespace CarRental
                     try
                     {
                         selectedId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["ID"].Value);
-                        var selectedCustomer = FormLogin.DB.Customers.Where(c => c.id == selectedId).FirstOrDefault();
+                        var selectedCustomer = RentalDatabase.DB.Customers.Where(c => c.id == selectedId).FirstOrDefault();
                         customerAddEdit = new CustomerAddEdit(selectedCustomer);
                         customerAddEdit.StartPosition = FormStartPosition.CenterScreen;
                         customerAddEdit.Show();
@@ -90,11 +90,11 @@ namespace CarRental
 
             foreach (var item in data)
             {
-                var customerToDelete = FormLogin.DB.Customers.Where(c => c.id == item).FirstOrDefault();
-                FormLogin.DB.Customers.Remove(customerToDelete);
+                var customerToDelete = RentalDatabase.DB.Customers.Where(c => c.id == item).FirstOrDefault();
+                RentalDatabase.DB.Customers.Remove(customerToDelete);
             }
 
-            FormLogin.DB.SaveChanges();
+            RentalDatabase.DB.SaveChanges();
             btnSearchCustomer.PerformClick();
         }
         private IEnumerable<int> GetIndexes(DataGridViewSelectedRowCollection data)

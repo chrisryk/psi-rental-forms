@@ -84,9 +84,9 @@ namespace CarRental.Forms
 
             if (!editMode)
             {
-                FormLogin.DB.Customers.Add(customer);
+                RentalDatabase.DB.Customers.Add(customer);
             }
-            FormLogin.DB.SaveChanges();
+            RentalDatabase.DB.SaveChanges();
             MessageBox.Show($"Customer {(editMode ? "edited in" : "added to")} database", "Success!");
             this.Close();
         }

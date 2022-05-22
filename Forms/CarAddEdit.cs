@@ -61,9 +61,9 @@ namespace CarRental.Forms
             if (!editMode)
             {
                 car.rented = false;
-                FormLogin.DB.Cars.Add(car);
+                RentalDatabase.DB.Cars.Add(car);
             }
-            FormLogin.DB.SaveChanges();
+            RentalDatabase.DB.SaveChanges();
             MessageBox.Show("Car added to database", "Success!");
 
             this.Close();
