@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -25,6 +26,30 @@ namespace CarRental
                 passwordTextBox.PasswordChar = '*';
                 label.Text = "show password";
             }
+        }
+
+        private void submitLoginButton_Click(object sender, EventArgs e)
+        {
+            string userPassword = passwordTextBox.Text;
+            string userName = usernameTextBox.Text;
+
+            var userData = DB.Users.Where(u => u.name == userName && u.password == userPassword).Count();
+            
+            if (userData > 0)
+            {
+                MessageBox.Show("Logged in!", "Info!");
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Login failed!", "Info!");
+                this.Close();
+            }
+        }
+
+        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

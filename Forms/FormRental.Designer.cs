@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRental));
-            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.controlsPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -47,12 +46,6 @@
             this.mainContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // usersToolStripMenuItem
-            // 
-            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
-            this.usersToolStripMenuItem.Text = "Users";
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -65,7 +58,6 @@
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usersToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -100,6 +92,7 @@
             this.invoiceButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("invoiceButton.BackgroundImage")));
             this.invoiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.invoiceButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.invoiceButton.Enabled = false;
             this.invoiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.invoiceButton.Location = new System.Drawing.Point(29, 485);
             this.invoiceButton.Margin = new System.Windows.Forms.Padding(20);
@@ -219,8 +212,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TableLayoutPanel controlsPanel;

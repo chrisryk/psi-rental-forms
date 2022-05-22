@@ -85,12 +85,6 @@
     <Compile Include="Forms\FormRental.Designer.cs">
       <DependentUpon>FormRental.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormUser.Designer.cs">
-      <DependentUpon>FormUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\RentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,7 +233,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
+if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
   </PropertyGroup>
 </Project>

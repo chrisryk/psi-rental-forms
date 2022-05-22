@@ -16,8 +16,16 @@ namespace CarRental
             InitializeComponent();
             AddEditIsOpen = false;
 
-            cbRateFrom.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Min();
-            cbRateTo.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Max();
+            try
+            {
+                cbRateFrom.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Min();
+                cbRateTo.Value = (int)FormLogin.DB.Cars.Select(c => c.daily_rate).Max();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Connection to database failed.", "Error!");
+                MessageBox.Show(e.StackTrace, "Error!");
+            }
 
             //yearsCollection = new List<int>();
 

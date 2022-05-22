@@ -77,6 +77,7 @@
             this.submitLoginButton.TabIndex = 4;
             this.submitLoginButton.Text = "Submit";
             this.submitLoginButton.UseVisualStyleBackColor = true;
+            this.submitLoginButton.Click += new System.EventHandler(this.submitLoginButton_Click);
             // 
             // showPasswordLabel
             // 
@@ -89,7 +90,7 @@
             this.showPasswordLabel.Text = "show password";
             this.showPasswordLabel.Click += new System.EventHandler(this.showPasswordLabel_Click);
             // 
-            // Login
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,9 +104,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Login";
+            this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
