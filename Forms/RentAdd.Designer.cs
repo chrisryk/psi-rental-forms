@@ -138,6 +138,8 @@
             // cbCustomerSurname
             // 
             this.cbCustomerSurname.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCustomerSurname.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbCustomerSurname.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCustomerSurname.FormattingEnabled = true;
             this.cbCustomerSurname.Location = new System.Drawing.Point(168, 53);
             this.cbCustomerSurname.Name = "cbCustomerSurname";
