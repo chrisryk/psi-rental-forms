@@ -25,11 +25,29 @@ namespace CarRental.Forms
 
         private void btnCarSave_Click(object sender, EventArgs e)
         {
-            selectedRent.date_back = dtpReturnDate.Value;
+            var dateBack = dtpReturnDate.Value;
+
+            if (dateBack > DateTimeOffset.UtcNow)
+            {
+                MessageBox.Show("Date cannot be from future.", "Warning!");
+                return;
+            }
+
+            selectedRent.date_back = dateBack;
             var returnedCar = selectedRent.car_id;
-            RentalDatabase.DB.Cars.Where(c => c.id == returnedCar).FirstOrDefault().rented = false;
-            RentalDatabase.DB.SaveChanges();
-            MessageBox.Show("Rent updated.", "Info!");
+
+            try
+            {
+                RentalDatabase.DB.Cars.Where(c => c.id == returnedCar).FirstOrDefault().rented = false;
+                RentalDatabase.DB.SaveChanges();
+                MessageBox.Show("Rent updated.", "Info!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection to database failed.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
+
             this.Close();
         }
     }

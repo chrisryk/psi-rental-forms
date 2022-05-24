@@ -32,8 +32,16 @@ namespace CarRental
                                 where c.licence.Contains(userLicence)
                                 select new { ID = c.id, CUSTOMER = c.name + " " + c.surname, EMAIL = c.email, PHONE = c.phone, LICENCE = c.licence };
 
-            dgvCustomers.DataSource = customersData.ToList();
-            dgvCustomers.Columns[0].Visible = false;
+            try
+            {
+                dgvCustomers.DataSource = customersData.ToList();
+                dgvCustomers.Columns[0].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection to database failed.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)

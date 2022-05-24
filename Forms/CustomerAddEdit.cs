@@ -82,13 +82,21 @@ namespace CarRental.Forms
             
             customer.licence = tbCustLicence.Text;
 
-            if (!editMode)
+            try
             {
-                RentalDatabase.DB.Customers.Add(customer);
+                if (!editMode)
+                {
+                    RentalDatabase.DB.Customers.Add(customer);
+                }
+                RentalDatabase.DB.SaveChanges();
+                MessageBox.Show($"Customer {(editMode ? "edited in" : "added to")} database", "Success!");
+                this.Close();
             }
-            RentalDatabase.DB.SaveChanges();
-            MessageBox.Show($"Customer {(editMode ? "edited in" : "added to")} database", "Success!");
-            this.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
         }
     }
 }

@@ -69,7 +69,7 @@ namespace CarRental
                     }
                     catch
                     {
-                        MessageBox.Show("Select item to edit.");
+                        MessageBox.Show("Select row to edit.");
                     }
                 }
             }
@@ -86,7 +86,7 @@ namespace CarRental
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occured.");
+                MessageBox.Show("Connection to database failed.", "Alert!");
                 MessageBox.Show(ex.StackTrace);
             }
         }
@@ -114,7 +114,7 @@ namespace CarRental
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occured.");
+                MessageBox.Show("Connection to database failed.", "Alert!");
                 MessageBox.Show(ex.StackTrace);
             }
 
@@ -126,7 +126,7 @@ namespace CarRental
 
             if (selectedCarIds.Count() == 0)
             {
-                MessageBox.Show("Select car to delete.", "Info");
+                MessageBox.Show("Select row(s) to delete.", "Info!");
                 return;
             }
 
@@ -137,18 +137,15 @@ namespace CarRental
                 return;
             }
 
-            foreach (var item in selectedCarIds)
-            {
-                var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == item).FirstOrDefault();
-                RentalDatabase.DB.Cars.Remove(carToDelete); 
-            }
-
             try
             {
+                foreach (var item in selectedCarIds)
+                {
+                    var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == item).FirstOrDefault();
+                    RentalDatabase.DB.Cars.Remove(carToDelete);
+                }
+
                 RentalDatabase.DB.SaveChanges();
-            }
-            catch
-            {
                 var userSecondAnswer = MessageBox.Show("Removing this item will result rents and invoices removal, proceed?", "Warning!", MessageBoxButtons.YesNo);
 
                 if (userSecondAnswer == DialogResult.Yes)
@@ -167,6 +164,11 @@ namespace CarRental
                     }
                     RentalDatabase.DB.SaveChanges();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection to database failed.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
             }
         }
 

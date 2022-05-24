@@ -63,8 +63,17 @@ namespace CarRental.Forms
                 car.rented = false;
                 RentalDatabase.DB.Cars.Add(car);
             }
-            RentalDatabase.DB.SaveChanges();
-            MessageBox.Show("Car added to database", "Success!");
+
+            try
+            {
+                RentalDatabase.DB.SaveChanges();
+                MessageBox.Show("Car added to database", "Success!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection to database failed.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
 
             this.Close();
         }

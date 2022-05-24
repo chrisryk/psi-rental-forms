@@ -32,18 +32,26 @@ namespace CarRental
         {
             string userPassword = passwordTextBox.Text;
             string userName = usernameTextBox.Text;
+            try
+            {
 
-            var userData = RentalDatabase.DB.Users.Where(u => u.name == userName && u.password == userPassword).Count();
-            
-            if (userData > 0)
-            {
-                MessageBox.Show("Logged in!", "Info!");
-                this.Hide();
+                var userData = RentalDatabase.DB.Users.Where(u => u.name == userName && u.password == userPassword).Count();
+
+                if (userData > 0)
+                {
+                    MessageBox.Show("Logged in!", "Info!");
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Login failed!", "Info!");
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Login failed!", "Info!");
-                this.Close();
+                MessageBox.Show("Database connection failed", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
             }
         }
 

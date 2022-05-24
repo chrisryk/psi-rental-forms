@@ -81,7 +81,15 @@ namespace CarRental
                                END = r.date_back
                            };
 
-            dgvRent.DataSource = rentData.ToList(); 
+            try
+            {
+                dgvRent.DataSource = rentData.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection to database failed.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
         }
     }
 }
