@@ -50,36 +50,15 @@ namespace CarRental.Forms
 
         private void SaveCustomer(Customers customer)
         {
+            if (!ValidateInput())
+            {
+                return;
+            }
 
             customer.name = tbCustName.Text.ToUpper();
             customer.surname = tbCustSurname.Text.ToUpper();
-
-            Regex patternEmail = new Regex("@{1}");
-            var emailValidate = patternEmail.IsMatch(tbCustEmail.Text);
-
-            if (emailValidate)
-            {
-                customer.email = tbCustEmail.Text.ToLower();
-            }
-            else
-            {
-                MessageBox.Show("Incorrect email format.", "Alert!");
-                return;
-            }
-
-            Regex phonePattern = new Regex("[0-9]{9,}");
-            var phoneValidate = phonePattern.IsMatch(tbCustPhone.Text);
-
-            if (phoneValidate)
-            {
-                customer.phone = tbCustPhone.Text;
-            }
-            else
-            {
-                MessageBox.Show("Phone number must be minimum 9 digits only.", "Alert!");
-                return;
-            }
-            
+            customer.email = tbCustEmail.Text.ToLower();
+            customer.phone = tbCustPhone.Text;
             customer.licence = tbCustLicence.Text;
 
             try
@@ -97,6 +76,53 @@ namespace CarRental.Forms
                 MessageBox.Show("Database connection failed.", "Alert!");
                 MessageBox.Show(ex.StackTrace, "Info!");
             }
+        }
+
+        private bool ValidateInput()
+        {
+            Regex namePattern = new Regex("[a-zA-Z]{2,}");
+            var nameValidate = namePattern.IsMatch(tbCustName.Text);
+            var surnameValidate = namePattern.IsMatch(tbCustSurname.Text);
+
+            if (!nameValidate)
+            {
+                MessageBox.Show("Incorrect name.", "Alert!");
+                return false;
+            }
+            if (!surnameValidate)
+            {
+                MessageBox.Show("Incorrect surname.", "Alert!");
+                return false;
+            }
+
+            Regex patternEmail = new Regex("^[0-9a-z.]*@[0-9a-z]+.[0-9a-z]{2,4}$", RegexOptions.IgnoreCase);
+            var emailValidate = patternEmail.IsMatch(tbCustEmail.Text);
+
+            if (!emailValidate)
+            {
+                MessageBox.Show("Incorrect email format.", "Alert!");
+                return false;
+            }
+
+            Regex phonePattern = new Regex("^[0-9]{9}$");
+            var phoneValidate = phonePattern.IsMatch(tbCustPhone.Text);
+
+            if (!phoneValidate)
+            {
+                MessageBox.Show("Phone number should have 9 digits.", "Alert!");
+                return false;
+            }
+
+            Regex licencePattern = new Regex("^[0-9]{5}/[0-9]{2}/[0-9]{4}$");
+            var licenceValidate = licencePattern.IsMatch(tbCustLicence.Text);
+
+            if (!licenceValidate)
+            {
+                MessageBox.Show("Licence pattern should be 12345/12/1234", "Alert!");
+                return false;
+            }
+
+            return true;
         }
     }
 }

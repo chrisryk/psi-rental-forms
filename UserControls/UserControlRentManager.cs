@@ -107,7 +107,9 @@ namespace CarRental
 
             var userAnswer = MessageBox.Show("Invoice for selected rent will be created, proceed?", "Info!", MessageBoxButtons.YesNo);
 
-            if (userAnswer == DialogResult.Yes && !IsInvoiceExisting(rentId))
+            if (userAnswer == DialogResult.Yes
+                && !IsInvoiceExisting(rentId)
+                && ReturnDateIsNotNull(rentId))
             {
                 Invoices invoices = new Invoices();
 
@@ -121,7 +123,7 @@ namespace CarRental
                                                         .Select(r => DbFunctions.DiffDays(r.date_start, r.date_back))
                                                         .FirstOrDefault();
 
-                invoices.date = DateTime.UtcNow;
+                invoices.date = DateTime.Now;
                 invoices.rent_id = rentId;
                 var totalPrice = daysInRent * carPrice.FirstOrDefault();
                 invoices.price = Convert.ToDecimal(totalPrice);
@@ -142,8 +144,23 @@ namespace CarRental
             {
                 MessageBox.Show("Invoice already exists for this rent.", "Info!");
             }
-
+            else if (!ReturnDateIsNotNull(rentId))
+            {
+                MessageBox.Show("Cannot create invoice if return date is null.", "Info!");
+            }
         }
+
+        private bool ReturnDateIsNotNull(int rentId)
+        {
+            var rent = RentalDatabase.DB.Rents.Where(r => r.date_back != null && r.id == rentId).Count();
+
+            if (rent > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private bool IsInvoiceExisting(int rentId)
         {
             var invoices = from i in RentalDatabase.DB.Invoices

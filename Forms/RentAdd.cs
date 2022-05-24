@@ -94,6 +94,12 @@ namespace CarRental.Forms
 
         private void btnRentSave_Click(object sender, EventArgs e)
         {
+            if (!CheckTextboxes())
+            {
+                MessageBox.Show("Fill all boxes.", "Warning!");
+                return;
+            }
+
             selectedLicence = cbCustomerLicence.SelectedValue.ToString();
 
             Rents rent = new Rents();
@@ -108,7 +114,7 @@ namespace CarRental.Forms
             
             if (dtpRentStartDate.Value <= DateTimeOffset.UtcNow)
             {
-                rent.date_start = dtpRentStartDate.Value.Date;
+                rent.date_start = dtpRentStartDate.Value;
             }
             else
             {
@@ -123,6 +129,19 @@ namespace CarRental.Forms
             RentalDatabase.DB.SaveChanges();
             MessageBox.Show("Rent added.", "Info!");
             this.Close();
+        }
+        private bool CheckTextboxes()
+        {
+            if (cbCustomerSurname.Text.Length == 0 ||
+                cbCustomerName.Text.Length == 0 ||
+                cbCustomerLicence.Text.Length == 0 ||
+                cbCarManufacturer.Text.Length == 0 ||
+                cbCarModel.Text.Length == 0 ||
+                cbVin.Text.Length == 0)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void RentAdd_FormClosed(object sender, FormClosedEventArgs e)
