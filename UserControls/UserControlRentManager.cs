@@ -1,6 +1,7 @@
 ﻿using CarRental.Forms;
 using System;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -70,8 +71,8 @@ namespace CarRental
                            where cu.email.Contains(email)
                            where cu.phone.Contains(phone)
                            where cu.licence.Contains(licence)
-                           //where r.date_start >= dateFrom
-                           //where r.date_back <= dateTo
+                           where r.date_start >= dateFrom
+                           where r.date_start <= dateTo
                            select new
                            {
                                RENT_ID = r.id,
@@ -90,6 +91,73 @@ namespace CarRental
                 MessageBox.Show("Connection to database failed.", "Alert!");
                 MessageBox.Show(ex.StackTrace, "Info!");
             }
+        }
+
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            var selectedRows = dgvRent.SelectedRows;
+
+            if (selectedRows.Count != 1)
+            {
+                MessageBox.Show("Select one rent to add new invoce.", "Warning!");
+                return;
+            }
+
+            var rentId = Convert.ToInt32(selectedRows[0].Cells["RENT_ID"].Value);
+
+            var userAnswer = MessageBox.Show("Invoice for selected rent will be created, proceed?", "Info!", MessageBoxButtons.YesNo);
+
+            if (userAnswer == DialogResult.Yes && !IsInvoiceExisting(rentId))
+            {
+                Invoices invoices = new Invoices();
+
+                var carPrice = from c in RentalDatabase.DB.Cars
+                               join r in RentalDatabase.DB.Rents
+                               on c.id equals r.car_id
+                               where r.id == rentId
+                               select c.daily_rate;
+
+                var daysInRent = RentalDatabase.DB.Rents.Where(r => r.id == rentId)
+                                                        .Select(r => DbFunctions.DiffDays(r.date_start, r.date_back))
+                                                        .FirstOrDefault();
+
+                invoices.date = DateTime.UtcNow;
+                invoices.rent_id = rentId;
+                var totalPrice = daysInRent * carPrice.FirstOrDefault();
+                invoices.price = Convert.ToDecimal(totalPrice);
+
+                try
+                {
+                    RentalDatabase.DB.Invoices.Add(invoices);
+                    RentalDatabase.DB.SaveChanges();
+                    MessageBox.Show("Invoice created!", "Info!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database connection failed", "Alert!");
+                    MessageBox.Show(ex.StackTrace, "Info!");
+                }
+            }
+            else if (IsInvoiceExisting(rentId))
+            {
+                MessageBox.Show("Invoice already exists for this rent.", "Info!");
+            }
+
+        }
+        private bool IsInvoiceExisting(int rentId)
+        {
+            var invoices = from i in RentalDatabase.DB.Invoices
+                           join r in RentalDatabase.DB.Rents
+                           on i.rent_id equals r.id
+                           where i.rent_id == rentId
+                           select i;
+
+            if (invoices.Count() > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

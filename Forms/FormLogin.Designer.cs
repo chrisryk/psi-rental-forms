@@ -42,6 +42,7 @@
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(279, 26);
             this.usernameTextBox.TabIndex = 0;
+            this.usernameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormLogin_KeyDown);
             // 
             // usernameLabel
             // 
@@ -56,9 +57,10 @@
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(116, 193);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.PasswordChar = '✱';
             this.passwordTextBox.Size = new System.Drawing.Size(279, 26);
-            this.passwordTextBox.TabIndex = 2;
+            this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormLogin_KeyDown);
             // 
             // passwordLabel
             // 
@@ -74,7 +76,7 @@
             this.submitLoginButton.Location = new System.Drawing.Point(200, 329);
             this.submitLoginButton.Name = "submitLoginButton";
             this.submitLoginButton.Size = new System.Drawing.Size(114, 55);
-            this.submitLoginButton.TabIndex = 4;
+            this.submitLoginButton.TabIndex = 2;
             this.submitLoginButton.Text = "Submit";
             this.submitLoginButton.UseVisualStyleBackColor = true;
             this.submitLoginButton.Click += new System.EventHandler(this.submitLoginButton_Click);
@@ -108,6 +110,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormLogin_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -46,11 +46,11 @@
             // 
             // btnRentSave
             // 
-            this.btnRentSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRentSave.Location = new System.Drawing.Point(517, 453);
+            this.btnRentSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRentSave.Location = new System.Drawing.Point(536, 499);
             this.btnRentSave.Name = "btnRentSave";
             this.btnRentSave.Size = new System.Drawing.Size(123, 38);
-            this.btnRentSave.TabIndex = 16;
+            this.btnRentSave.TabIndex = 9;
             this.btnRentSave.Text = "SAVE";
             this.btnRentSave.UseVisualStyleBackColor = true;
             this.btnRentSave.Click += new System.EventHandler(this.btnRentSave_Click);
@@ -62,15 +62,15 @@
             this.dtpRentStartDate.Location = new System.Drawing.Point(168, 324);
             this.dtpRentStartDate.Name = "dtpRentStartDate";
             this.dtpRentStartDate.Size = new System.Drawing.Size(159, 26);
-            this.dtpRentStartDate.TabIndex = 12;
+            this.dtpRentStartDate.TabIndex = 7;
             // 
             // btnRentCancel
             // 
-            this.btnRentCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRentCancel.Location = new System.Drawing.Point(21, 453);
+            this.btnRentCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRentCancel.Location = new System.Drawing.Point(3, 499);
             this.btnRentCancel.Name = "btnRentCancel";
             this.btnRentCancel.Size = new System.Drawing.Size(123, 38);
-            this.btnRentCancel.TabIndex = 15;
+            this.btnRentCancel.TabIndex = 8;
             this.btnRentCancel.Text = "CANCEL";
             this.btnRentCancel.UseVisualStyleBackColor = true;
             this.btnRentCancel.Click += new System.EventHandler(this.btnRentCancel_Click);
@@ -144,7 +144,7 @@
             this.cbCustomerSurname.Location = new System.Drawing.Point(168, 53);
             this.cbCustomerSurname.Name = "cbCustomerSurname";
             this.cbCustomerSurname.Size = new System.Drawing.Size(159, 28);
-            this.cbCustomerSurname.TabIndex = 17;
+            this.cbCustomerSurname.TabIndex = 1;
             this.cbCustomerSurname.SelectedValueChanged += new System.EventHandler(this.cbCustomerSurname_SelectedValueChanged);
             // 
             // cbCarManufacturer
@@ -154,7 +154,7 @@
             this.cbCarManufacturer.Location = new System.Drawing.Point(168, 188);
             this.cbCarManufacturer.Name = "cbCarManufacturer";
             this.cbCarManufacturer.Size = new System.Drawing.Size(159, 28);
-            this.cbCarManufacturer.TabIndex = 18;
+            this.cbCarManufacturer.TabIndex = 4;
             this.cbCarManufacturer.SelectedValueChanged += new System.EventHandler(this.cbCarManufacturer_SelectedValueChanged);
             // 
             // cbCarModel
@@ -164,7 +164,7 @@
             this.cbCarModel.Location = new System.Drawing.Point(333, 188);
             this.cbCarModel.Name = "cbCarModel";
             this.cbCarModel.Size = new System.Drawing.Size(159, 28);
-            this.cbCarModel.TabIndex = 19;
+            this.cbCarModel.TabIndex = 5;
             this.cbCarModel.SelectedValueChanged += new System.EventHandler(this.cbCarModel_SelectedValueChanged);
             // 
             // cbCustomerName
@@ -174,7 +174,7 @@
             this.cbCustomerName.Location = new System.Drawing.Point(333, 53);
             this.cbCustomerName.Name = "cbCustomerName";
             this.cbCustomerName.Size = new System.Drawing.Size(159, 28);
-            this.cbCustomerName.TabIndex = 20;
+            this.cbCustomerName.TabIndex = 2;
             this.cbCustomerName.SelectedValueChanged += new System.EventHandler(this.cbCustomerName_SelectedValueChanged);
             // 
             // cbCustomerLicence
@@ -184,7 +184,7 @@
             this.cbCustomerLicence.Location = new System.Drawing.Point(499, 53);
             this.cbCustomerLicence.Name = "cbCustomerLicence";
             this.cbCustomerLicence.Size = new System.Drawing.Size(159, 28);
-            this.cbCustomerLicence.TabIndex = 21;
+            this.cbCustomerLicence.TabIndex = 3;
             // 
             // cbVin
             // 
@@ -193,7 +193,7 @@
             this.cbVin.Location = new System.Drawing.Point(498, 188);
             this.cbVin.Name = "cbVin";
             this.cbVin.Size = new System.Drawing.Size(161, 28);
-            this.cbVin.TabIndex = 22;
+            this.cbVin.TabIndex = 6;
             // 
             // RentAdd
             // 

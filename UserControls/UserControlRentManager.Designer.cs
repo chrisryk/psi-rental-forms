@@ -48,6 +48,7 @@
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dgvRent = new System.Windows.Forms.DataGridView();
+            this.btnInvoice = new System.Windows.Forms.Button();
             this.rentWorkspace.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRent)).BeginInit();
@@ -55,6 +56,7 @@
             // 
             // rentWorkspace
             // 
+            this.rentWorkspace.Controls.Add(this.btnInvoice);
             this.rentWorkspace.Controls.Add(this.btnGiveBack);
             this.rentWorkspace.Controls.Add(this.rentSearchButton);
             this.rentWorkspace.Controls.Add(this.btnNewRent);
@@ -123,15 +125,15 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.96875F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.03125F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(978, 128);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tbRentSurname
             // 
             this.tbRentSurname.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbRentSurname.Location = new System.Drawing.Point(143, 41);
+            this.tbRentSurname.Location = new System.Drawing.Point(143, 58);
             this.tbRentSurname.Name = "tbRentSurname";
             this.tbRentSurname.Size = new System.Drawing.Size(134, 26);
             this.tbRentSurname.TabIndex = 8;
@@ -139,7 +141,7 @@
             // tbPhone
             // 
             this.tbPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbPhone.Location = new System.Drawing.Point(423, 41);
+            this.tbPhone.Location = new System.Drawing.Point(423, 58);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(134, 26);
             this.tbPhone.TabIndex = 7;
@@ -147,7 +149,7 @@
             // tbEmail
             // 
             this.tbEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbEmail.Location = new System.Drawing.Point(283, 41);
+            this.tbEmail.Location = new System.Drawing.Point(283, 58);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(134, 26);
             this.tbEmail.TabIndex = 6;
@@ -205,7 +207,7 @@
             // tbRentId
             // 
             this.tbRentId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbRentId.Location = new System.Drawing.Point(3, 41);
+            this.tbRentId.Location = new System.Drawing.Point(3, 58);
             this.tbRentId.Name = "tbRentId";
             this.tbRentId.Size = new System.Drawing.Size(134, 26);
             this.tbRentId.TabIndex = 5;
@@ -216,9 +218,9 @@
             this.rentSearchDateFromLabel.Location = new System.Drawing.Point(703, 5);
             this.rentSearchDateFromLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchDateFromLabel.Name = "rentSearchDateFromLabel";
-            this.rentSearchDateFromLabel.Size = new System.Drawing.Size(103, 20);
+            this.rentSearchDateFromLabel.Size = new System.Drawing.Size(112, 40);
             this.rentSearchDateFromLabel.TabIndex = 10;
-            this.rentSearchDateFromLabel.Text = "DATE FROM";
+            this.rentSearchDateFromLabel.Text = "DATE START FROM";
             // 
             // rentSearchDateToPickerLabel
             // 
@@ -226,14 +228,14 @@
             this.rentSearchDateToPickerLabel.Location = new System.Drawing.Point(843, 5);
             this.rentSearchDateToPickerLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.rentSearchDateToPickerLabel.Name = "rentSearchDateToPickerLabel";
-            this.rentSearchDateToPickerLabel.Size = new System.Drawing.Size(77, 20);
+            this.rentSearchDateToPickerLabel.Size = new System.Drawing.Size(112, 40);
             this.rentSearchDateToPickerLabel.TabIndex = 12;
-            this.rentSearchDateToPickerLabel.Text = "DATE TO";
+            this.rentSearchDateToPickerLabel.Text = "DATE START TO";
             // 
             // tbLicence
             // 
             this.tbLicence.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbLicence.Location = new System.Drawing.Point(563, 41);
+            this.tbLicence.Location = new System.Drawing.Point(563, 58);
             this.tbLicence.Name = "tbLicence";
             this.tbLicence.Size = new System.Drawing.Size(134, 26);
             this.tbLicence.TabIndex = 9;
@@ -241,7 +243,7 @@
             // dtpFrom
             // 
             this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpFrom.Location = new System.Drawing.Point(703, 41);
+            this.dtpFrom.Location = new System.Drawing.Point(703, 58);
             this.dtpFrom.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             this.dtpFrom.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtpFrom.Name = "dtpFrom";
@@ -252,7 +254,7 @@
             // dtpTo
             // 
             this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpTo.Location = new System.Drawing.Point(843, 41);
+            this.dtpTo.Location = new System.Drawing.Point(843, 58);
             this.dtpTo.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             this.dtpTo.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtpTo.Name = "dtpTo";
@@ -269,6 +271,16 @@
             this.dgvRent.RowTemplate.Height = 28;
             this.dgvRent.Size = new System.Drawing.Size(978, 312);
             this.dgvRent.TabIndex = 5;
+            // 
+            // btnInvoice
+            // 
+            this.btnInvoice.Location = new System.Drawing.Point(486, 231);
+            this.btnInvoice.Name = "btnInvoice";
+            this.btnInvoice.Size = new System.Drawing.Size(139, 47);
+            this.btnInvoice.TabIndex = 7;
+            this.btnInvoice.Text = "NEW INVOICE";
+            this.btnInvoice.UseVisualStyleBackColor = true;
+            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
             // UserControlRentManager
             // 
@@ -308,5 +320,6 @@
         private System.Windows.Forms.Button btnGiveBack;
         private System.Windows.Forms.Button btnNewRent;
         private System.Windows.Forms.DataGridView dgvRent;
+        private System.Windows.Forms.Button btnInvoice;
     }
 }

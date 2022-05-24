@@ -77,11 +77,11 @@
             // 
             // btnCustSave
             // 
-            this.btnCustSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCustSave.Location = new System.Drawing.Point(368, 475);
+            this.btnCustSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCustSave.Location = new System.Drawing.Point(536, 499);
             this.btnCustSave.Name = "btnCustSave";
             this.btnCustSave.Size = new System.Drawing.Size(123, 38);
-            this.btnCustSave.TabIndex = 16;
+            this.btnCustSave.TabIndex = 7;
             this.btnCustSave.Text = "SAVE";
             this.btnCustSave.UseVisualStyleBackColor = true;
             this.btnCustSave.Click += new System.EventHandler(this.btnCustSave_Click);
@@ -142,7 +142,7 @@
             this.tbCustName.Location = new System.Drawing.Point(201, 31);
             this.tbCustName.Name = "tbCustName";
             this.tbCustName.Size = new System.Drawing.Size(325, 26);
-            this.tbCustName.TabIndex = 6;
+            this.tbCustName.TabIndex = 0;
             // 
             // tbCustSurname
             // 
@@ -150,7 +150,7 @@
             this.tbCustSurname.Location = new System.Drawing.Point(201, 121);
             this.tbCustSurname.Name = "tbCustSurname";
             this.tbCustSurname.Size = new System.Drawing.Size(325, 26);
-            this.tbCustSurname.TabIndex = 7;
+            this.tbCustSurname.TabIndex = 1;
             // 
             // tbCustLicence
             // 
@@ -159,15 +159,15 @@
             this.tbCustLicence.MaxLength = 17;
             this.tbCustLicence.Name = "tbCustLicence";
             this.tbCustLicence.Size = new System.Drawing.Size(325, 26);
-            this.tbCustLicence.TabIndex = 10;
+            this.tbCustLicence.TabIndex = 5;
             // 
             // btnCustCancel
             // 
-            this.btnCustCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCustCancel.Location = new System.Drawing.Point(37, 475);
+            this.btnCustCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCustCancel.Location = new System.Drawing.Point(3, 499);
             this.btnCustCancel.Name = "btnCustCancel";
             this.btnCustCancel.Size = new System.Drawing.Size(123, 38);
-            this.btnCustCancel.TabIndex = 15;
+            this.btnCustCancel.TabIndex = 6;
             this.btnCustCancel.Text = "CANCEL";
             this.btnCustCancel.UseVisualStyleBackColor = true;
             this.btnCustCancel.Click += new System.EventHandler(this.btnCustCancel_Click);
@@ -178,7 +178,7 @@
             this.tbCustEmail.Location = new System.Drawing.Point(201, 211);
             this.tbCustEmail.Name = "tbCustEmail";
             this.tbCustEmail.Size = new System.Drawing.Size(325, 26);
-            this.tbCustEmail.TabIndex = 17;
+            this.tbCustEmail.TabIndex = 3;
             // 
             // tbCustPhone
             // 
@@ -186,7 +186,7 @@
             this.tbCustPhone.Location = new System.Drawing.Point(201, 301);
             this.tbCustPhone.Name = "tbCustPhone";
             this.tbCustPhone.Size = new System.Drawing.Size(325, 26);
-            this.tbCustPhone.TabIndex = 18;
+            this.tbCustPhone.TabIndex = 4;
             // 
             // CustomerAddEdit
             // 

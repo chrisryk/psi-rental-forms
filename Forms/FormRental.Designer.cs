@@ -92,7 +92,6 @@
             this.invoiceButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("invoiceButton.BackgroundImage")));
             this.invoiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.invoiceButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.invoiceButton.Enabled = false;
             this.invoiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.invoiceButton.Location = new System.Drawing.Point(29, 482);
             this.invoiceButton.Margin = new System.Windows.Forms.Padding(20);

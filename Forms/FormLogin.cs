@@ -6,11 +6,9 @@ namespace CarRental
 {
     public partial class FormLogin : Form
     {
-        //public static RentalEntities DB;
         public FormLogin()
         {
             InitializeComponent();
-            //DB = new RentalEntities();
         }
 
         private void showPasswordLabel_Click(object sender, EventArgs e)
@@ -23,7 +21,7 @@ namespace CarRental
             }
             else
             {
-                passwordTextBox.PasswordChar = '*';
+                passwordTextBox.PasswordChar = '✱';
                 label.Text = "show password";
             }
         }
@@ -58,6 +56,14 @@ namespace CarRental
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                submitLoginButton.PerformClick();
+            }
         }
     }
 }

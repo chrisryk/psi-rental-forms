@@ -42,7 +42,7 @@
             this.dtpReturnDate.Location = new System.Drawing.Point(310, 55);
             this.dtpReturnDate.Name = "dtpReturnDate";
             this.dtpReturnDate.Size = new System.Drawing.Size(200, 26);
-            this.dtpReturnDate.TabIndex = 0;
+            this.dtpReturnDate.TabIndex = 1;
             // 
             // lbRentBack
             // 
@@ -78,7 +78,7 @@
             this.btnCarSave.Location = new System.Drawing.Point(348, 185);
             this.btnCarSave.Name = "btnCarSave";
             this.btnCarSave.Size = new System.Drawing.Size(123, 38);
-            this.btnCarSave.TabIndex = 16;
+            this.btnCarSave.TabIndex = 3;
             this.btnCarSave.Text = "SAVE";
             this.btnCarSave.UseVisualStyleBackColor = true;
             this.btnCarSave.Click += new System.EventHandler(this.btnCarSave_Click);
@@ -89,7 +89,7 @@
             this.btnCarCancel.Location = new System.Drawing.Point(75, 185);
             this.btnCarCancel.Name = "btnCarCancel";
             this.btnCarCancel.Size = new System.Drawing.Size(123, 38);
-            this.btnCarCancel.TabIndex = 15;
+            this.btnCarCancel.TabIndex = 2;
             this.btnCarCancel.Text = "CANCEL";
             this.btnCarCancel.UseVisualStyleBackColor = true;
             this.btnCarCancel.Click += new System.EventHandler(this.btnCarCancel_Click);

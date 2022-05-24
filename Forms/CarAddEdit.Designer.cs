@@ -51,9 +51,8 @@
             // tableCarAdd
             // 
             this.tableCarAdd.ColumnCount = 2;
-            this.tableCarAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableCarAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableCarAdd.Controls.Add(this.btnCarSave, 1, 6);
+            this.tableCarAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.29003F));
+            this.tableCarAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.70997F));
             this.tableCarAdd.Controls.Add(this.lbCarManufacturer, 0, 0);
             this.tableCarAdd.Controls.Add(this.lbCarModel, 0, 1);
             this.tableCarAdd.Controls.Add(this.lbCarYear, 0, 2);
@@ -67,6 +66,7 @@
             this.tableCarAdd.Controls.Add(this.btnCarCancel, 0, 6);
             this.tableCarAdd.Controls.Add(this.nudCarRate, 1, 5);
             this.tableCarAdd.Controls.Add(this.nudCarYear, 1, 2);
+            this.tableCarAdd.Controls.Add(this.btnCarSave, 1, 6);
             this.tableCarAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableCarAdd.Location = new System.Drawing.Point(0, 0);
             this.tableCarAdd.Name = "tableCarAdd";
@@ -83,11 +83,11 @@
             // 
             // btnCarSave
             // 
-            this.btnCarSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCarSave.Location = new System.Drawing.Point(368, 482);
+            this.btnCarSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarSave.Location = new System.Drawing.Point(536, 499);
             this.btnCarSave.Name = "btnCarSave";
             this.btnCarSave.Size = new System.Drawing.Size(123, 38);
-            this.btnCarSave.TabIndex = 16;
+            this.btnCarSave.TabIndex = 7;
             this.btnCarSave.Text = "SAVE";
             this.btnCarSave.UseVisualStyleBackColor = true;
             this.btnCarSave.Click += new System.EventHandler(this.btnCarSave_Click);
@@ -96,7 +96,7 @@
             // 
             this.lbCarManufacturer.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbCarManufacturer.AutoSize = true;
-            this.lbCarManufacturer.Location = new System.Drawing.Point(91, 28);
+            this.lbCarManufacturer.Location = new System.Drawing.Point(120, 28);
             this.lbCarManufacturer.Name = "lbCarManufacturer";
             this.lbCarManufacturer.Size = new System.Drawing.Size(104, 20);
             this.lbCarManufacturer.TabIndex = 0;
@@ -106,7 +106,7 @@
             // 
             this.lbCarModel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbCarModel.AutoSize = true;
-            this.lbCarModel.Location = new System.Drawing.Point(143, 105);
+            this.lbCarModel.Location = new System.Drawing.Point(172, 105);
             this.lbCarModel.Name = "lbCarModel";
             this.lbCarModel.Size = new System.Drawing.Size(52, 20);
             this.lbCarModel.TabIndex = 1;
@@ -116,7 +116,7 @@
             // 
             this.lbCarYear.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbCarYear.AutoSize = true;
-            this.lbCarYear.Location = new System.Drawing.Point(152, 182);
+            this.lbCarYear.Location = new System.Drawing.Point(181, 182);
             this.lbCarYear.Name = "lbCarYear";
             this.lbCarYear.Size = new System.Drawing.Size(43, 20);
             this.lbCarYear.TabIndex = 2;
@@ -126,7 +126,7 @@
             // 
             this.lbCarInsurance.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbCarInsurance.AutoSize = true;
-            this.lbCarInsurance.Location = new System.Drawing.Point(115, 259);
+            this.lbCarInsurance.Location = new System.Drawing.Point(144, 259);
             this.lbCarInsurance.Name = "lbCarInsurance";
             this.lbCarInsurance.Size = new System.Drawing.Size(80, 20);
             this.lbCarInsurance.TabIndex = 3;
@@ -136,7 +136,7 @@
             // 
             this.lbCarVin.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbCarVin.AutoSize = true;
-            this.lbCarVin.Location = new System.Drawing.Point(159, 336);
+            this.lbCarVin.Location = new System.Drawing.Point(188, 336);
             this.lbCarVin.Name = "lbCarVin";
             this.lbCarVin.Size = new System.Drawing.Size(36, 20);
             this.lbCarVin.TabIndex = 4;
@@ -146,7 +146,7 @@
             // 
             this.lbCarRate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbCarRate.AutoSize = true;
-            this.lbCarRate.Location = new System.Drawing.Point(113, 413);
+            this.lbCarRate.Location = new System.Drawing.Point(142, 413);
             this.lbCarRate.Name = "lbCarRate";
             this.lbCarRate.Size = new System.Drawing.Size(82, 20);
             this.lbCarRate.TabIndex = 5;
@@ -155,43 +155,43 @@
             // tbCarManufacturer
             // 
             this.tbCarManufacturer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbCarManufacturer.Location = new System.Drawing.Point(201, 25);
+            this.tbCarManufacturer.Location = new System.Drawing.Point(230, 25);
             this.tbCarManufacturer.Name = "tbCarManufacturer";
             this.tbCarManufacturer.Size = new System.Drawing.Size(325, 26);
-            this.tbCarManufacturer.TabIndex = 6;
+            this.tbCarManufacturer.TabIndex = 0;
             // 
             // tbCarModel
             // 
             this.tbCarModel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbCarModel.Location = new System.Drawing.Point(201, 102);
+            this.tbCarModel.Location = new System.Drawing.Point(230, 102);
             this.tbCarModel.Name = "tbCarModel";
             this.tbCarModel.Size = new System.Drawing.Size(325, 26);
-            this.tbCarModel.TabIndex = 7;
+            this.tbCarModel.TabIndex = 1;
             // 
             // tbVIN
             // 
             this.tbVIN.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbVIN.Location = new System.Drawing.Point(201, 333);
+            this.tbVIN.Location = new System.Drawing.Point(230, 333);
             this.tbVIN.MaxLength = 17;
             this.tbVIN.Name = "tbVIN";
             this.tbVIN.Size = new System.Drawing.Size(325, 26);
-            this.tbVIN.TabIndex = 10;
+            this.tbVIN.TabIndex = 4;
             // 
             // dtpCarInsurance
             // 
             this.dtpCarInsurance.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dtpCarInsurance.Location = new System.Drawing.Point(201, 256);
+            this.dtpCarInsurance.Location = new System.Drawing.Point(230, 256);
             this.dtpCarInsurance.Name = "dtpCarInsurance";
             this.dtpCarInsurance.Size = new System.Drawing.Size(325, 26);
-            this.dtpCarInsurance.TabIndex = 12;
+            this.dtpCarInsurance.TabIndex = 3;
             // 
             // btnCarCancel
             // 
-            this.btnCarCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCarCancel.Location = new System.Drawing.Point(37, 482);
+            this.btnCarCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCarCancel.Location = new System.Drawing.Point(3, 499);
             this.btnCarCancel.Name = "btnCarCancel";
             this.btnCarCancel.Size = new System.Drawing.Size(123, 38);
-            this.btnCarCancel.TabIndex = 15;
+            this.btnCarCancel.TabIndex = 6;
             this.btnCarCancel.Text = "CANCEL";
             this.btnCarCancel.UseVisualStyleBackColor = true;
             this.btnCarCancel.Click += new System.EventHandler(this.btnCarCancel_Click);
@@ -199,7 +199,7 @@
             // nudCarRate
             // 
             this.nudCarRate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nudCarRate.Location = new System.Drawing.Point(201, 410);
+            this.nudCarRate.Location = new System.Drawing.Point(230, 410);
             this.nudCarRate.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -207,12 +207,12 @@
             0});
             this.nudCarRate.Name = "nudCarRate";
             this.nudCarRate.Size = new System.Drawing.Size(325, 26);
-            this.nudCarRate.TabIndex = 17;
+            this.nudCarRate.TabIndex = 5;
             // 
             // nudCarYear
             // 
             this.nudCarYear.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nudCarYear.Location = new System.Drawing.Point(201, 179);
+            this.nudCarYear.Location = new System.Drawing.Point(230, 179);
             this.nudCarYear.Maximum = new decimal(new int[] {
             2023,
             0,
@@ -225,7 +225,7 @@
             0});
             this.nudCarYear.Name = "nudCarYear";
             this.nudCarYear.Size = new System.Drawing.Size(120, 26);
-            this.nudCarYear.TabIndex = 18;
+            this.nudCarYear.TabIndex = 2;
             this.nudCarYear.Value = new decimal(new int[] {
             2022,
             0,
