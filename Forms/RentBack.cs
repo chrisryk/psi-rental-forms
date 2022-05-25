@@ -10,6 +10,7 @@ namespace CarRental.Forms
         public RentBack(Rents rent)
         {
             InitializeComponent();
+
             selectedRent = rent;
         }
 
@@ -27,9 +28,8 @@ namespace CarRental.Forms
         {
             var dateBack = dtpReturnDate.Value;
 
-            if (dateBack > DateTimeOffset.UtcNow)
+            if (!ValidateDate(dateBack))
             {
-                MessageBox.Show("Date cannot be from future.", "Warning!");
                 return;
             }
 
@@ -49,6 +49,21 @@ namespace CarRental.Forms
             }
 
             this.Close();
+        }
+        private bool ValidateDate(DateTime dateBack)
+        {
+            if (dateBack > DateTimeOffset.UtcNow)
+            {
+                MessageBox.Show("Date cannot be from future.", "Warning!");
+                return false;
+            }
+            if (dateBack < selectedRent.date_start)
+            {
+                MessageBox.Show("Date cannot be earlier than rent start date.", "Warning!");
+                return false;
+            }
+
+            return true;
         }
     }
 }

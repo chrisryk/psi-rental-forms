@@ -47,9 +47,9 @@ namespace CarRental
                 rentBack.Show();
                 AddEditIsOpen = true;
             }
-            else if (!AddEditIsOpen && dgvRent.SelectedRows.Count > 1)
+            else
             {
-                MessageBox.Show("Select only one rent.", "Info!");
+                MessageBox.Show("Select one rent.", "Info!");
             }
         }
         private void rentSearchButton_Click(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace CarRental
 
                 invoices.date = DateTime.Now;
                 invoices.rent_id = rentId;
-                var totalPrice = daysInRent * carPrice.FirstOrDefault();
+                var totalPrice = (daysInRent == 0 ? 1 : daysInRent) * carPrice.FirstOrDefault();
                 invoices.price = Convert.ToDecimal(totalPrice);
 
                 try

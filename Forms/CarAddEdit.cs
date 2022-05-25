@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CarRental.Forms
@@ -51,6 +52,11 @@ namespace CarRental.Forms
         }
         private void SaveCar(Cars car)
         {
+            if (!ValidateInput())
+            {
+                return;
+            }
+
             car.manufacturer = tbCarManufacturer.Text.ToUpper();
             car.model = tbCarModel.Text.ToUpper();
             car.year = nudCarYear.Value;
@@ -76,6 +82,43 @@ namespace CarRental.Forms
             }
 
             this.Close();
+        }
+        private bool ValidateInput()
+        {
+            if (tbCarManufacturer.Text.Length == 0 || tbCarModel.Text.Length == 0)
+            {
+                MessageBox.Show("Fields cannot be empty.", "Alert!");
+                return false;
+            }
+
+            if (nudCarYear.Value > DateTime.Now.Year)
+            {
+                MessageBox.Show("Production year cannot be from future.", "Alert!");
+                return false;
+            }
+            
+            if (nudCarRate.Value > 5000 || nudCarRate.Value <= 0)
+            {
+                MessageBox.Show("Incorrect daily rate.", "Alert!");
+                return false;
+            }
+
+            Regex vinPattern = new Regex("[a-z0-9]{17}", RegexOptions.IgnoreCase);
+            bool vinChecked = vinPattern.IsMatch(tbVIN.Text);
+
+            if (!vinChecked)
+            {
+                MessageBox.Show("VIN number should have 17 characters.", "Alert!");
+                return false;
+            }
+
+            if (dtpCarInsurance.Value < DateTime.Now || dtpCarInsurance.Value > DateTime.Now.AddYears(1))
+            {
+                MessageBox.Show("Incorrect insurance date.", "Alert!");
+                return false;
+            }
+
+            return true;
         }
     }
 }
