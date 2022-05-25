@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -6,9 +7,14 @@ namespace CarRental
 {
     public partial class FormLogin : Form
     {
+        private event Action UserDataSubmitted = () => { };
+        private string userPassword;
+        private string userName;
         public FormLogin()
         {
             InitializeComponent();
+
+            UserDataSubmitted += ValidateInputData;
         }
 
         private void showPasswordLabel_Click(object sender, EventArgs e)
@@ -28,8 +34,14 @@ namespace CarRental
 
         private void submitLoginButton_Click(object sender, EventArgs e)
         {
-            string userPassword = passwordTextBox.Text;
-            string userName = usernameTextBox.Text;
+            userPassword = passwordTextBox.Text;
+            userName = usernameTextBox.Text;
+
+            UserDataSubmitted.Invoke();
+
+        }
+        private void ValidateInputData()
+        {
             try
             {
 
@@ -46,10 +58,16 @@ namespace CarRental
                     this.Close();
                 }
             }
-            catch (Exception ex)
+            catch (EntityException ex)
             {
                 MessageBox.Show("Database connection failed", "Alert!");
                 MessageBox.Show(ex.StackTrace, "Info!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+                throw;
             }
         }
 
