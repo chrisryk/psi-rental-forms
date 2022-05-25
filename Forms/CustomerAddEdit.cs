@@ -80,7 +80,7 @@ namespace CarRental.Forms
 
         private bool ValidateInput()
         {
-            Regex namePattern = new Regex("[a-zA-Z]{2,}");
+            Regex namePattern = new Regex("^[a-z]{2,}$", RegexOptions.IgnoreCase);
             var nameValidate = namePattern.IsMatch(tbCustName.Text);
             var surnameValidate = namePattern.IsMatch(tbCustSurname.Text);
 
@@ -95,7 +95,7 @@ namespace CarRental.Forms
                 return false;
             }
 
-            Regex patternEmail = new Regex("^[0-9a-z.]*@[0-9a-z]+.[0-9a-z]{2,4}$", RegexOptions.IgnoreCase);
+            Regex patternEmail = new Regex(@"^[0-9a-z.]*@[0-9a-z]+\.[0-9a-z]{2,4}$", RegexOptions.IgnoreCase);
             var emailValidate = patternEmail.IsMatch(tbCustEmail.Text);
 
             if (!emailValidate)

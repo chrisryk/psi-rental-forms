@@ -100,7 +100,7 @@ namespace CarRental
                 return;
             }
 
-            var userAnswer = MessageBox.Show("Data will be removed, proceed?", "Warning!", MessageBoxButtons.YesNo);
+            var userAnswer = MessageBox.Show("Customer with all connected rents and invoices will be removed, proceed?", "Warning!", MessageBoxButtons.YesNo);
 
             if (userAnswer == DialogResult.No)
             {
