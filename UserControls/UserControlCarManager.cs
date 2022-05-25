@@ -1,7 +1,9 @@
 ﻿using CarRental.Forms;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,11 +11,22 @@ namespace CarRental
 {
     public partial class UserControlCarManager : UserControl
     {
+        private event Action<IEnumerable> SearchClicked = (c) => { };
+        private event Action AddCarClicked = () => { };
+        private event Action<Cars> EditCarClicked = (c) => { };
+        private event Action<IEnumerable> DeleteCarClicked = (c) => { };
+        private CarAddEdit carAddEdit;
         public static bool AddEditIsOpen { get; set; }
         //private IList<int> yearsCollection;
         public UserControlCarManager()
         {
             InitializeComponent();
+
+            SearchClicked += DisplaySearchResult;
+            AddCarClicked += OpenAddEditWindow;
+            EditCarClicked += (c) => OpenAddEditWindow(c);
+            DeleteCarClicked += (c) => DeleteData(c);
+
             AddEditIsOpen = false;
 
             try
@@ -21,10 +34,16 @@ namespace CarRental
                 cbRateFrom.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Min();
                 cbRateTo.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Max();
             }
-            catch (Exception e)
+            catch (EntityException ex)
             {
-                MessageBox.Show("Connection to database failed.", "Error!");
-                MessageBox.Show(e.StackTrace, "Error!");
+                MessageBox.Show("Database connection failed", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+                throw;
             }
 
             //yearsCollection = new List<int>();
@@ -46,13 +65,9 @@ namespace CarRental
 
             if (!AddEditIsOpen)
             {
-                CarAddEdit carAddEdit;
-
                 if (value == "ADD")
                 {
-                    carAddEdit = new CarAddEdit();
-                    carAddEdit.StartPosition = FormStartPosition.CenterScreen;
-                    carAddEdit.Show();
+                    AddCarClicked.Invoke();
                     AddEditIsOpen = true;
                 }
                 else if (value == "EDIT")
@@ -62,9 +77,7 @@ namespace CarRental
                     {
                         selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
                         var selectedCar = RentalDatabase.DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
-                        carAddEdit = new CarAddEdit(selectedCar);
-                        carAddEdit.StartPosition = FormStartPosition.CenterScreen;
-                        carAddEdit.Show();
+                        EditCarClicked.Invoke(selectedCar);
                         AddEditIsOpen = true;
                     }
                     catch
@@ -74,21 +87,26 @@ namespace CarRental
                 }
             }
         }
+        private void OpenAddEditWindow()
+        {
+            carAddEdit = new CarAddEdit();
+            carAddEdit.StartPosition = FormStartPosition.CenterScreen;
+            carAddEdit.Show();
+        }
+        private void OpenAddEditWindow(Cars car)
+        {
+            carAddEdit = new CarAddEdit(car);
+            carAddEdit.StartPosition = FormStartPosition.CenterScreen;
+            carAddEdit.Show();
+        }
         private void btnShowCars_Click(object sender, EventArgs e)
         {
             var data = from c in RentalDatabase.DB.Cars
                        select new { ID = c.id, CAR = c.year + " " + c.manufacturer + " " + c.model, INSURANCE = c.insurance, RATE = c.daily_rate };
 
-            try
-            {
-                dgvCars.DataSource = data.ToList();
-                dgvCars.Columns[0].Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Connection to database failed.", "Alert!");
-                MessageBox.Show(ex.StackTrace);
-            }
+            var listOfCars = data.ToList();
+
+            SearchClicked.Invoke(listOfCars);
         }
 
         private void btnSearchCar_Click(object sender, EventArgs e)
@@ -106,25 +124,37 @@ namespace CarRental
                        where c.daily_rate >= dailyRateFrom && c.daily_rate <= dailyRateTo
                        where c.year >= yearFrom && c.year <= yearTo
                        select new { ID = c.id, MANUFACTURER = c.manufacturer, MODEL = c.model, YEAR = c.year, RATE = c.daily_rate };
+
+            var listOfCars = data.ToList();
+
+            SearchClicked.Invoke(listOfCars);
+        }
+        private void DisplaySearchResult(IEnumerable data)
+        {
             try
             {
-                dgvCars.DataSource = data.ToList();
+                dgvCars.DataSource = data;
                 dgvCars.Columns[0].Visible = false;
 
             }
+            catch (EntityException ex)
+            {
+                MessageBox.Show("Database connection failed", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection to database failed.", "Alert!");
-                MessageBox.Show(ex.StackTrace);
+                MessageBox.Show("An error occured.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+                throw;
             }
-
         }
 
         private void btnDeleteCar_Click(object sender, EventArgs e)
         {
-            var selectedCarIds = GetIndexes(dgvCars.SelectedRows);
+            var selectedCarsIds = GetIndexes(dgvCars.SelectedRows);
 
-            if (selectedCarIds.Count() == 0)
+            if (selectedCarsIds.Count() == 0)
             {
                 MessageBox.Show("Select row(s) to delete.", "Info!");
                 return;
@@ -137,24 +167,26 @@ namespace CarRental
                 return;
             }
 
+            DeleteCarClicked.Invoke(selectedCarsIds);
+        }
+        private void DeleteData(IEnumerable data)
+        {
             try
             {
-                foreach (var item in selectedCarIds)
-                {
-                    var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == item).FirstOrDefault();
-                    RentalDatabase.DB.Cars.Remove(carToDelete);
-                }
-
-                RentalDatabase.DB.SaveChanges();
                 var userSecondAnswer = MessageBox.Show("Removing this item will result rents and invoices removal, proceed?", "Warning!", MessageBoxButtons.YesNo);
 
                 if (userSecondAnswer == DialogResult.Yes)
                 {
-                    foreach (var id in selectedCarIds)
+                    foreach (int id in data)
                     {
+
                         var rentsToDelete = RentalDatabase.DB.Rents.Where(r => r.car_id == id).Select(r => r.id);
+
                         foreach (var rent in rentsToDelete)
                         {
+                            var invoiceToDelete = RentalDatabase.DB.Invoices.Where(i => i.rent_id == rent).FirstOrDefault();
+                            RentalDatabase.DB.Invoices.Remove(invoiceToDelete);
+
                             var rentTodelete = RentalDatabase.DB.Rents.Where(r => r.id == rent).FirstOrDefault();
                             RentalDatabase.DB.Rents.Remove(rentTodelete);
                         }
@@ -162,13 +194,21 @@ namespace CarRental
                         var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == id).FirstOrDefault();
                         RentalDatabase.DB.Cars.Remove(carToDelete);
                     }
+
                     RentalDatabase.DB.SaveChanges();
+                    MessageBox.Show("Data deleted.", "Info!");
                 }
+            }
+            catch (EntityException ex)
+            {
+                MessageBox.Show("Database connection failed", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection to database failed.", "Alert!");
+                MessageBox.Show("An error occured.", "Alert!");
                 MessageBox.Show(ex.StackTrace, "Info!");
+                throw;
             }
         }
 
