@@ -7,10 +7,15 @@ namespace CarRental
 {
     public partial class FormRental : Form
     {
+        private event Action<string> ControlButtonClicked = (x) => { };
         private IList<Button> controlButtons = new List<Button>();
         public FormRental()
         {
             InitializeComponent();
+
+            ControlButtonClicked += (x) => ResetButtonsColor();
+            ControlButtonClicked += SetButtonColor;
+            ControlButtonClicked += AddWorkspace;
         }
 
         private void Rental_Load(object sender, EventArgs e)
@@ -82,9 +87,7 @@ namespace CarRental
         {
             var value = (sender as Button).Tag.ToString();
 
-            ResetButtonsColor();
-            SetButtonColor(value);
-            AddWorkspace(value);
+            ControlButtonClicked.Invoke(value);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
