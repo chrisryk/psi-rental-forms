@@ -15,6 +15,11 @@ namespace CarRental
         public UserControlInvoiceManager()
         {
             InitializeComponent();
+
+            dtpDateFrom.MaxDate = DateTime.Now;
+            dtpDateTo.MaxDate = DateTime.Now;
+            nudInvoiceId.Maximum = RentalDatabase.DB.Invoices.Select(i => i.id).Max();
+            nudRentId.Maximum = RentalDatabase.DB.Rents.Select(r => r.id).Max();
         }
         public UserControlInvoiceManager(int rentId)
         {
@@ -24,6 +29,14 @@ namespace CarRental
 
         private void btnSearchInvoice_Click(object sender, EventArgs e)
         {
+            var invoiceId = nudInvoiceId.Value;
+            string customerSurname = tbSurname.Text.ToUpper();
+            string carManufacturer = tbManufacturer.Text.ToUpper();
+            string carModel = tbModel.Text.ToUpper();
+            int rentId = Convert.ToInt32(nudRentId.Value);
+            DateTime invoiceDateFrom = dtpDateFrom.Value;
+            DateTime invoiceDateTo = dtpDateTo.Value;
+
             var dataInvoices = from i in RentalDatabase.DB.Invoices
                                join r in RentalDatabase.DB.Rents
                                on i.rent_id equals r.id
@@ -31,6 +44,13 @@ namespace CarRental
                                on r.car_id equals c.id
                                join cu in RentalDatabase.DB.Customers
                                on r.customer_id equals cu.id
+                               where (invoiceId == 0) ? i.id >= 0 : i.id == invoiceId
+                               where cu.surname.Contains(customerSurname)
+                               where c.manufacturer.Contains(carManufacturer)
+                               where c.model.Contains(carModel)
+                               where (rentId == 0) ? i.rent_id >= 0 : i.rent_id == rentId
+                               where i.date >= invoiceDateFrom
+                               where i.date <= invoiceDateTo
                                select new
                                {
                                    DATE = i.date,
