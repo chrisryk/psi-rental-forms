@@ -31,26 +31,26 @@
             this.invoiceWorkspace = new System.Windows.Forms.Panel();
             this.btnSearchInvoice = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tbSurname = new System.Windows.Forms.TextBox();
             this.tbModel = new System.Windows.Forms.TextBox();
-            this.tbManufacturer = new System.Windows.Forms.TextBox();
             this.invoiceSearchRentLabel = new System.Windows.Forms.Label();
             this.invoiceSearchModelLabel = new System.Windows.Forms.Label();
+            this.tbManufacturer = new System.Windows.Forms.TextBox();
             this.invoiceSearchManufacturerLabel = new System.Windows.Forms.Label();
             this.invoiceSearchSurnameLabel = new System.Windows.Forms.Label();
             this.invoiceSearchIdLabel = new System.Windows.Forms.Label();
+            this.tbSurname = new System.Windows.Forms.TextBox();
             this.invoiceSearchDateFromPickerLabel = new System.Windows.Forms.Label();
             this.invoiceSearchDateToPickerLabel = new System.Windows.Forms.Label();
             this.dtpDateFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpDateTo = new System.Windows.Forms.DateTimePicker();
-            this.dgvInvoices = new System.Windows.Forms.DataGridView();
             this.nudRentId = new System.Windows.Forms.NumericUpDown();
             this.nudInvoiceId = new System.Windows.Forms.NumericUpDown();
+            this.dgvInvoices = new System.Windows.Forms.DataGridView();
             this.invoiceWorkspace.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRentId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInvoiceId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).BeginInit();
             this.SuspendLayout();
             // 
             // invoiceWorkspace
@@ -106,14 +106,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(978, 128);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // tbSurname
-            // 
-            this.tbSurname.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbSurname.Location = new System.Drawing.Point(143, 41);
-            this.tbSurname.Name = "tbSurname";
-            this.tbSurname.Size = new System.Drawing.Size(134, 26);
-            this.tbSurname.TabIndex = 1;
-            // 
             // tbModel
             // 
             this.tbModel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -121,14 +113,6 @@
             this.tbModel.Name = "tbModel";
             this.tbModel.Size = new System.Drawing.Size(134, 26);
             this.tbModel.TabIndex = 3;
-            // 
-            // tbManufacturer
-            // 
-            this.tbManufacturer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbManufacturer.Location = new System.Drawing.Point(283, 41);
-            this.tbManufacturer.Name = "tbManufacturer";
-            this.tbManufacturer.Size = new System.Drawing.Size(134, 26);
-            this.tbManufacturer.TabIndex = 2;
             // 
             // invoiceSearchRentLabel
             // 
@@ -149,6 +133,14 @@
             this.invoiceSearchModelLabel.Size = new System.Drawing.Size(66, 20);
             this.invoiceSearchModelLabel.TabIndex = 3;
             this.invoiceSearchModelLabel.Text = "MODEL";
+            // 
+            // tbManufacturer
+            // 
+            this.tbManufacturer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbManufacturer.Location = new System.Drawing.Point(283, 41);
+            this.tbManufacturer.Name = "tbManufacturer";
+            this.tbManufacturer.Size = new System.Drawing.Size(134, 26);
+            this.tbManufacturer.TabIndex = 2;
             // 
             // invoiceSearchManufacturerLabel
             // 
@@ -179,6 +171,14 @@
             this.invoiceSearchIdLabel.Size = new System.Drawing.Size(96, 20);
             this.invoiceSearchIdLabel.TabIndex = 1;
             this.invoiceSearchIdLabel.Text = "INVOICE ID";
+            // 
+            // tbSurname
+            // 
+            this.tbSurname.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSurname.Location = new System.Drawing.Point(143, 41);
+            this.tbSurname.Name = "tbSurname";
+            this.tbSurname.Size = new System.Drawing.Size(134, 26);
+            this.tbSurname.TabIndex = 1;
             // 
             // invoiceSearchDateFromPickerLabel
             // 
@@ -219,17 +219,6 @@
             this.dtpDateTo.Size = new System.Drawing.Size(132, 26);
             this.dtpDateTo.TabIndex = 6;
             // 
-            // dgvInvoices
-            // 
-            this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvInvoices.Location = new System.Drawing.Point(0, 0);
-            this.dgvInvoices.Name = "dgvInvoices";
-            this.dgvInvoices.RowHeadersWidth = 62;
-            this.dgvInvoices.RowTemplate.Height = 28;
-            this.dgvInvoices.Size = new System.Drawing.Size(978, 372);
-            this.dgvInvoices.TabIndex = 6;
-            // 
             // nudRentId
             // 
             this.nudRentId.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -246,6 +235,17 @@
             this.nudInvoiceId.Size = new System.Drawing.Size(134, 26);
             this.nudInvoiceId.TabIndex = 14;
             // 
+            // dgvInvoices
+            // 
+            this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvInvoices.Location = new System.Drawing.Point(0, 0);
+            this.dgvInvoices.Name = "dgvInvoices";
+            this.dgvInvoices.RowHeadersWidth = 62;
+            this.dgvInvoices.RowTemplate.Height = 28;
+            this.dgvInvoices.Size = new System.Drawing.Size(978, 372);
+            this.dgvInvoices.TabIndex = 6;
+            // 
             // UserControlInvoiceManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -257,9 +257,9 @@
             this.invoiceWorkspace.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRentId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInvoiceId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).EndInit();
             this.ResumeLayout(false);
 
         }

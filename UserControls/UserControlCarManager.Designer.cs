@@ -231,20 +231,6 @@
             this.cbYearFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbYearFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYearFrom.FormattingEnabled = true;
-            this.cbYearFrom.Items.AddRange(new object[] {
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022"});
             this.cbYearFrom.Location = new System.Drawing.Point(123, 3);
             this.cbYearFrom.Name = "cbYearFrom";
             this.cbYearFrom.Size = new System.Drawing.Size(114, 28);
@@ -255,20 +241,6 @@
             this.cbYearTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbYearTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYearTo.FormattingEnabled = true;
-            this.cbYearTo.Items.AddRange(new object[] {
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022"});
             this.cbYearTo.Location = new System.Drawing.Point(123, 45);
             this.cbYearTo.Name = "cbYearTo";
             this.cbYearTo.Size = new System.Drawing.Size(114, 28);

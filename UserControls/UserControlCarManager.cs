@@ -17,7 +17,6 @@ namespace CarRental
         private event Action<IEnumerable> DeleteCarClicked = (c) => { };
         private CarAddEdit carAddEdit;
         public static bool AddEditIsOpen { get; set; }
-        //private IList<int> yearsCollection;
         public UserControlCarManager()
         {
             InitializeComponent();
@@ -36,6 +35,13 @@ namespace CarRental
                 btnDeleteCar.Enabled = false;
             }
 
+            InitializeRentValues();
+            InitializeProductionYears();
+        }
+
+
+        private void InitializeRentValues()
+        {
             try
             {
                 cbRateFrom.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Min();
@@ -52,20 +58,20 @@ namespace CarRental
                 MessageBox.Show(ex.StackTrace, "Info!");
                 throw;
             }
-
-            //yearsCollection = new List<int>();
-
-            //for (int i = 2000; i <= DateTimeOffset.Now.Year; i++)
-            //{
-            //    yearsCollection.Add(i);
-            //}
-
-            //cbYearFrom.DataSource = yearsCollection;
-            cbYearFrom.SelectedIndex = 0;
-            //cbYearTo.DataSource = yearsCollection;
-            cbYearTo.SelectedIndex = cbYearTo.Items.Count - 1;
         }
+        private void InitializeProductionYears()
+        {
+            var minYear = Convert.ToInt32(RentalDatabase.DB.Cars.Select(c => c.year).Min());
 
+            for (int i = minYear; i <= DateTime.Now.Year; i++)
+            {
+                cbYearFrom.Items.Add(i);
+                cbYearTo.Items.Add(i);
+            }
+
+            cbYearFrom.Text = cbYearFrom.Items[0].ToString();
+            cbYearTo.Text = cbYearFrom.Items[cbYearFrom.Items.Count - 1].ToString();
+        }
         private void btnAddCar_Click(object sender, EventArgs e)
         {
             var value = (sender as Button).Text;
@@ -79,17 +85,29 @@ namespace CarRental
                 }
                 else if (value == "EDIT")
                 {
-                    int selectedId;
+                    if (dgvCars.SelectedRows.Count != 1)
+                    {
+                        MessageBox.Show("Select one row to edit.");
+                        return;
+                    }
+
                     try
                     {
-                        selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
+                        int selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
                         var selectedCar = RentalDatabase.DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
                         EditCarClicked.Invoke(selectedCar);
                         AddEditIsOpen = true;
                     }
-                    catch
+                    catch (EntityException ex)
                     {
-                        MessageBox.Show("Select row to edit.");
+                        MessageBox.Show("Database connection failed", "Alert!");
+                        MessageBox.Show(ex.StackTrace, "Info!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occured.", "Alert!");
+                        MessageBox.Show(ex.StackTrace, "Info!");
+                        throw;
                     }
                 }
             }
