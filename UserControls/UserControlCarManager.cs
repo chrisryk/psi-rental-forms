@@ -29,6 +29,13 @@ namespace CarRental
 
             AddEditIsOpen = false;
 
+            if (FormLogin.UserRole == Role.Advisor)
+            {
+                btnAddCar.Enabled = false;
+                btnEditCar.Enabled = false;
+                btnDeleteCar.Enabled = false;
+            }
+
             try
             {
                 cbRateFrom.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Min();

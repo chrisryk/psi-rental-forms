@@ -121,6 +121,7 @@
     <Compile Include="Rents.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Role.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>

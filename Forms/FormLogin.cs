@@ -10,11 +10,13 @@ namespace CarRental
         private event Action UserDataSubmitted = () => { };
         private string userPassword;
         private string userName;
+        public static Role UserRole { get; private set; } = Role.None;
         public FormLogin()
         {
             InitializeComponent();
 
             UserDataSubmitted += ValidateInputData;
+            UserDataSubmitted += SetRole;
         }
 
         private void showPasswordLabel_Click(object sender, EventArgs e)
@@ -69,6 +71,32 @@ namespace CarRental
                 MessageBox.Show(ex.StackTrace, "Info!");
                 throw;
             }
+        }
+        private void SetRole()
+        {
+            var role = from r in RentalDatabase.DB.Roles
+                       join u in RentalDatabase.DB.Users
+                       on r.id equals u.role_id
+                       where u.name == userName
+                       where u.password == userPassword
+                       select r.role;
+
+            switch (role.FirstOrDefault())
+            {
+                case "admin":
+                    UserRole = Role.Admin;
+                    break;
+                case "manager":
+                    UserRole = Role.Manager;
+                    break;
+                case "customer advisor":
+                    UserRole = Role.Advisor;
+                    break;
+                default:
+                    break;
+            }
+
+            MessageBox.Show("Role: " + UserRole.ToString(), "Info!");
         }
 
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)

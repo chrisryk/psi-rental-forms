@@ -19,6 +19,11 @@ namespace CarRental
 
             DeleteCustomerClicked += DeleteData;
             AddEditIsOpen = false;
+
+            if (FormLogin.UserRole == Role.Advisor)
+            {
+                btnDeleteCustomer.Enabled = false;
+            }
         }
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)

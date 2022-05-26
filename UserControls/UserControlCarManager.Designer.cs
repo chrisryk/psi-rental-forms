@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSearchCar = new System.Windows.Forms.Button();
             this.btnAddCar = new System.Windows.Forms.Button();
             this.btnEditCar = new System.Windows.Forms.Button();
@@ -51,6 +52,7 @@
             this.lbCarRateFrom = new System.Windows.Forms.Label();
             this.lbCarRate = new System.Windows.Forms.Label();
             this.dgvCars = new System.Windows.Forms.DataGridView();
+            this.toolTipAdvisor = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panelCarYear.SuspendLayout();
             this.panelCarRate.SuspendLayout();
@@ -76,6 +78,7 @@
             this.btnAddCar.Size = new System.Drawing.Size(91, 47);
             this.btnAddCar.TabIndex = 2;
             this.btnAddCar.Text = "ADD";
+            this.toolTipAdvisor.SetToolTip(this.btnAddCar, "Disabled in Advisor mode");
             this.btnAddCar.UseVisualStyleBackColor = true;
             this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
             // 
@@ -86,6 +89,7 @@
             this.btnEditCar.Size = new System.Drawing.Size(91, 47);
             this.btnEditCar.TabIndex = 3;
             this.btnEditCar.Text = "EDIT";
+            this.toolTipAdvisor.SetToolTip(this.btnEditCar, "Disabled in Advisor mode");
             this.btnEditCar.UseVisualStyleBackColor = true;
             this.btnEditCar.Click += new System.EventHandler(this.btnAddCar_Click);
             // 
@@ -96,6 +100,7 @@
             this.btnDeleteCar.Size = new System.Drawing.Size(91, 47);
             this.btnDeleteCar.TabIndex = 4;
             this.btnDeleteCar.Text = "DELETE";
+            this.toolTipAdvisor.SetToolTip(this.btnDeleteCar, "Disabled in Advisor mode");
             this.btnDeleteCar.UseVisualStyleBackColor = true;
             this.btnDeleteCar.Click += new System.EventHandler(this.btnDeleteCar_Click);
             // 
@@ -352,6 +357,10 @@
             this.dgvCars.Size = new System.Drawing.Size(978, 351);
             this.dgvCars.TabIndex = 0;
             // 
+            // toolTipAdvisor
+            // 
+            this.toolTipAdvisor.Active = false;
+            // 
             // UserControlCarManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -402,5 +411,6 @@
         private System.Windows.Forms.DataGridView dgvCars;
         private System.Windows.Forms.NumericUpDown cbRateTo;
         private System.Windows.Forms.NumericUpDown cbRateFrom;
+        private System.Windows.Forms.ToolTip toolTipAdvisor;
     }
 }
