@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,13 +10,11 @@ namespace CarRental
 {
     public partial class UserControlCustomerManager : UserControl
     {
-        private event Action<IEnumerable> DeleteCustomerClicked = (c) => { };
         public static bool AddEditIsOpen { get; set; }
         public UserControlCustomerManager()
         {
             InitializeComponent();
 
-            DeleteCustomerClicked += DeleteData;
             AddEditIsOpen = false;
 
             if (FormLogin.UserRole == Role.Advisor)
@@ -34,17 +31,10 @@ namespace CarRental
             var userPhone = tbUserPhone.Text;
             var userLicence = tbUserLicence.Text.ToUpper();
 
-            var customersData = from c in RentalDatabase.DB.Customers
-                                where c.name.Contains(userName)
-                                where c.surname.Contains(userSurname)
-                                where c.email.Contains(userEmail)
-                                where c.phone.Contains(userPhone)
-                                where c.licence.Contains(userLicence)
-                                select new { ID = c.id, CUSTOMER = c.name + " " + c.surname, EMAIL = c.email, PHONE = c.phone, LICENCE = c.licence };
-
             try
             {
-                dgvCustomers.DataSource = customersData.ToList();
+                var customerData = RentalDatabase.SearchCustomers(userName, userSurname, userEmail, userPhone, userLicence);
+                dgvCustomers.DataSource = customerData;
                 dgvCustomers.Columns[0].Visible = false;
             }
             catch (EntityException ex)
@@ -77,19 +67,31 @@ namespace CarRental
                 }
                 else if (value == "EDIT")
                 {
-                    int selectedId;
+                    if (dgvCustomers.SelectedRows.Count != 1)
+                    {
+                        MessageBox.Show("Select one row to edit.");
+                        return;
+                    }
+                    
                     try
                     {
-                        selectedId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["ID"].Value);
-                        var selectedCustomer = RentalDatabase.DB.Customers.Where(c => c.id == selectedId).FirstOrDefault();
+                        int selectedId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["ID"].Value);
+                        var selectedCustomer = RentalDatabase.GetCustomer(selectedId);
                         customerAddEdit = new CustomerAddEdit(selectedCustomer);
                         customerAddEdit.StartPosition = FormStartPosition.CenterScreen;
                         customerAddEdit.Show();
                         AddEditIsOpen = true;
                     }
-                    catch
+                    catch (EntityException ex)
                     {
-                        MessageBox.Show("Select item to edit.");
+                        MessageBox.Show("Database connection failed", "Alert!");
+                        MessageBox.Show(ex.StackTrace, "Info!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occured.", "Alert!");
+                        MessageBox.Show(ex.StackTrace, "Info!");
+                        throw;
                     }
                 }
             }
@@ -97,53 +99,49 @@ namespace CarRental
 
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
         {
-            var data = GetIndexes(dgvCustomers.SelectedRows);
+            var selectedCustomers = GetIndexes(dgvCustomers.SelectedRows);
 
-            if (data.Count() == 0)
+            if (selectedCustomers.Count() == 0)
             {
-                MessageBox.Show("Select customer to delete.", "Info");
+                MessageBox.Show("Select row(s) to delete.", "Info");
                 return;
             }
 
-            var userAnswer = MessageBox.Show("Customer with all connected rents and invoices will be removed, proceed?", "Warning!", MessageBoxButtons.YesNo);
+            DeleteData(selectedCustomers);
+        }
+        private void DeleteData(IEnumerable selectedCustomers)
+        {
+            var userAnswer = MessageBox.Show("Data will be removed, proceed?", "Warning!", MessageBoxButtons.YesNo);
 
             if (userAnswer == DialogResult.No)
             {
                 return;
             }
 
-            DeleteCustomerClicked.Invoke(data);
-        }
-        private void DeleteData(IEnumerable data)
-        {
-            foreach (int id in data)
+            var userAnswerConfirm = MessageBox.Show("Removing this item will result rents and invoices removal, proceed?", "Warning!", MessageBoxButtons.YesNo);
+
+            if (userAnswerConfirm == DialogResult.No)
             {
-                var invoicesToDelete = from i in RentalDatabase.DB.Invoices
-                                       join r in RentalDatabase.DB.Rents
-                                       on i.rent_id equals r.id
-                                       join c in RentalDatabase.DB.Customers
-                                       on r.customer_id equals c.id
-                                       where c.id == id
-                                       select i;
-
-                foreach (var invoice in invoicesToDelete)
-                {
-                    RentalDatabase.DB.Invoices.Remove(invoice);
-                }
-
-                var rentsToDelete = RentalDatabase.DB.Rents.Where(r => r.customer_id == id);
-
-                foreach (var rent in rentsToDelete)
-                {
-                    RentalDatabase.DB.Rents.Remove(rent);
-                }
-
-                var customerToDelete = RentalDatabase.DB.Customers.Where(c => c.id == id).FirstOrDefault();
-                RentalDatabase.DB.Customers.Remove(customerToDelete);
+                return;
             }
 
-            RentalDatabase.DB.SaveChanges();
-            MessageBox.Show("Data deleted.", "Info!");
+            try
+            {
+                RentalDatabase.DeleteCustomers(selectedCustomers);
+                MessageBox.Show("Data deleted.", "Info!");
+            }
+            catch (EntityException ex)
+            {
+                MessageBox.Show("Database connection failed", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+                throw;
+            }
+
             btnSearchCustomer.PerformClick();
         }
         private IEnumerable<int> GetIndexes(DataGridViewSelectedRowCollection data)

@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,9 +11,6 @@ namespace CarRental
     public partial class UserControlCarManager : UserControl
     {
         private event Action<IEnumerable> SearchClicked = (c) => { };
-        private event Action AddCarClicked = () => { };
-        private event Action<Cars> EditCarClicked = (c) => { };
-        private event Action<IEnumerable> DeleteCarClicked = (c) => { };
         private CarAddEdit carAddEdit;
         public static bool AddEditIsOpen { get; set; }
         public UserControlCarManager()
@@ -22,9 +18,6 @@ namespace CarRental
             InitializeComponent();
 
             SearchClicked += DisplaySearchResult;
-            AddCarClicked += OpenAddEditWindow;
-            EditCarClicked += (c) => OpenAddEditWindow(c);
-            DeleteCarClicked += (c) => DeleteData(c);
 
             AddEditIsOpen = false;
 
@@ -38,14 +31,12 @@ namespace CarRental
             InitializeRentValues();
             InitializeProductionYears();
         }
-
-
         private void InitializeRentValues()
         {
             try
             {
-                cbRateFrom.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Min();
-                cbRateTo.Value = (int)RentalDatabase.DB.Cars.Select(c => c.daily_rate).Max();
+                cbRateFrom.Value = RentalDatabase.GetMinCarDailyRate();
+                cbRateTo.Value = RentalDatabase.GetMaxCarDailyRate();
             }
             catch (EntityException ex)
             {
@@ -61,7 +52,7 @@ namespace CarRental
         }
         private void InitializeProductionYears()
         {
-            var minYear = Convert.ToInt32(RentalDatabase.DB.Cars.Select(c => c.year).Min());
+            var minYear = RentalDatabase.GetMinProductionYear();
 
             for (int i = minYear; i <= DateTime.Now.Year; i++)
             {
@@ -80,7 +71,7 @@ namespace CarRental
             {
                 if (value == "ADD")
                 {
-                    AddCarClicked.Invoke();
+                    OpenAddEditWindow();
                     AddEditIsOpen = true;
                 }
                 else if (value == "EDIT")
@@ -94,8 +85,8 @@ namespace CarRental
                     try
                     {
                         int selectedId = Convert.ToInt32(dgvCars.SelectedRows[0].Cells["ID"].Value);
-                        var selectedCar = RentalDatabase.DB.Cars.Where(c => c.id == selectedId).FirstOrDefault();
-                        EditCarClicked.Invoke(selectedCar);
+                        var selectedCar = RentalDatabase.GetCar(selectedId);
+                        OpenAddEditWindow(selectedCar);
                         AddEditIsOpen = true;
                     }
                     catch (EntityException ex)
@@ -126,14 +117,9 @@ namespace CarRental
         }
         private void btnShowCars_Click(object sender, EventArgs e)
         {
-            var data = from c in RentalDatabase.DB.Cars
-                       select new { ID = c.id, CAR = c.year + " " + c.manufacturer + " " + c.model, INSURANCE = c.insurance, RATE = c.daily_rate };
-
-            var listOfCars = data.ToList();
-
+            var listOfCars = RentalDatabase.ShowCars();
             SearchClicked.Invoke(listOfCars);
         }
-
         private void btnSearchCar_Click(object sender, EventArgs e)
         {
             var manufacturer = tbCarManufacturer.Text.ToUpper();
@@ -143,15 +129,7 @@ namespace CarRental
             var yearFrom = Convert.ToInt32(cbYearFrom.Text);
             var yearTo = Convert.ToInt32(cbYearTo.Text);
 
-            var data = from c in RentalDatabase.DB.Cars
-                       where c.manufacturer.ToUpper().Contains(manufacturer)
-                       where c.model.ToUpper().Contains(model)
-                       where c.daily_rate >= dailyRateFrom && c.daily_rate <= dailyRateTo
-                       where c.year >= yearFrom && c.year <= yearTo
-                       select new { ID = c.id, MANUFACTURER = c.manufacturer, MODEL = c.model, YEAR = c.year, RATE = c.daily_rate };
-
-            var listOfCars = data.ToList();
-
+            var listOfCars = RentalDatabase.SearchCars(manufacturer, model, dailyRateFrom, dailyRateTo, yearFrom, yearTo);
             SearchClicked.Invoke(listOfCars);
         }
         private void DisplaySearchResult(IEnumerable data)
@@ -160,7 +138,6 @@ namespace CarRental
             {
                 dgvCars.DataSource = data;
                 dgvCars.Columns[0].Visible = false;
-
             }
             catch (EntityException ex)
             {
@@ -174,7 +151,6 @@ namespace CarRental
                 throw;
             }
         }
-
         private void btnDeleteCar_Click(object sender, EventArgs e)
         {
             var selectedCarsIds = GetIndexes(dgvCars.SelectedRows);
@@ -185,6 +161,10 @@ namespace CarRental
                 return;
             }
 
+            DeleteCars(selectedCarsIds);
+        }
+        private void DeleteCars(IEnumerable selectedCars)
+        {
             var userAnswer = MessageBox.Show("Data will be removed, proceed?", "Warning!", MessageBoxButtons.YesNo);
 
             if (userAnswer == DialogResult.No)
@@ -192,37 +172,17 @@ namespace CarRental
                 return;
             }
 
-            DeleteCarClicked.Invoke(selectedCarsIds);
-        }
-        private void DeleteData(IEnumerable data)
-        {
+            var userAnswerConfirm = MessageBox.Show("Removing this item will result rents and invoices removal, proceed?", "Warning!", MessageBoxButtons.YesNo);
+
+            if (userAnswerConfirm == DialogResult.No)
+            {
+                return;
+            }
+
             try
             {
-                var userSecondAnswer = MessageBox.Show("Removing this item will result rents and invoices removal, proceed?", "Warning!", MessageBoxButtons.YesNo);
-
-                if (userSecondAnswer == DialogResult.Yes)
-                {
-                    foreach (int id in data)
-                    {
-
-                        var rentsToDelete = RentalDatabase.DB.Rents.Where(r => r.car_id == id).Select(r => r.id);
-
-                        foreach (var rent in rentsToDelete)
-                        {
-                            var invoiceToDelete = RentalDatabase.DB.Invoices.Where(i => i.rent_id == rent).FirstOrDefault();
-                            RentalDatabase.DB.Invoices.Remove(invoiceToDelete);
-
-                            var rentTodelete = RentalDatabase.DB.Rents.Where(r => r.id == rent).FirstOrDefault();
-                            RentalDatabase.DB.Rents.Remove(rentTodelete);
-                        }
-
-                        var carToDelete = RentalDatabase.DB.Cars.Where(c => c.id == id).FirstOrDefault();
-                        RentalDatabase.DB.Cars.Remove(carToDelete);
-                    }
-
-                    RentalDatabase.DB.SaveChanges();
-                    MessageBox.Show("Data deleted.", "Info!");
-                }
+                RentalDatabase.DeleteCars(selectedCars);
+                MessageBox.Show("Data deleted.", "Info!");
             }
             catch (EntityException ex)
             {
@@ -236,7 +196,6 @@ namespace CarRental
                 throw;
             }
         }
-
         private IEnumerable<int> GetIndexes(DataGridViewSelectedRowCollection data)
         {
             for (int i = 0; i < data.Count; i++)

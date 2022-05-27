@@ -58,9 +58,16 @@
     <Compile Include="Cars.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core\InputValidation.cs" />
+    <Compile Include="Core\RoleSetter.cs" />
     <Compile Include="Customers.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\CarDisplaySearch.cs" />
+    <Compile Include="Database\CarDisplayShow.cs" />
+    <Compile Include="Database\CustomerDisplaySearch.cs" />
+    <Compile Include="Database\InvoiceDisplaySearch.cs" />
+    <Compile Include="Database\RentDisplaySearch.cs" />
     <Compile Include="Forms\CarAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,7 +109,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentalDatabase.cs" />
+    <Compile Include="Database\RentalDatabase.cs" />
     <Compile Include="RentalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,7 +128,7 @@
     <Compile Include="Rents.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Role.cs" />
+    <Compile Include="Core\Role.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
@@ -235,7 +242,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
-if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

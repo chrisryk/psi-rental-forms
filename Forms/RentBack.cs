@@ -38,8 +38,7 @@ namespace CarRental.Forms
 
             try
             {
-                RentalDatabase.DB.Cars.Where(c => c.id == returnedCar).FirstOrDefault().rented = false;
-                RentalDatabase.DB.SaveChanges();
+                RentalDatabase.SaveRentBack((int)returnedCar, dateBack);
                 MessageBox.Show("Rent updated.", "Info!");
             }
             catch (Exception ex)
@@ -52,12 +51,12 @@ namespace CarRental.Forms
         }
         private bool ValidateDate(DateTime dateBack)
         {
-            if (dateBack > DateTimeOffset.UtcNow)
+            if (InputValidation.RentDateBackFromFuture(dateBack))
             {
                 MessageBox.Show("Date cannot be from future.", "Warning!");
                 return false;
             }
-            if (dateBack < selectedRent.date_start)
+            if (InputValidation.RentDateBackEarlierThanStart(dateBack, selectedRent.date_start))
             {
                 MessageBox.Show("Date cannot be earlier than rent start date.", "Warning!");
                 return false;

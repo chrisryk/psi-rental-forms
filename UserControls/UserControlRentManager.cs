@@ -1,8 +1,6 @@
 ﻿using CarRental.Forms;
 using System;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+using System.Data.Entity.Core;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -33,19 +31,33 @@ namespace CarRental
         {
             if (!AddEditIsOpen && dgvRent.SelectedRows.Count == 1)
             {
-                var selectedRentId = Convert.ToInt32(dgvRent.SelectedRows[0].Cells["RENT_ID"].Value);
-                var selectedRent = RentalDatabase.DB.Rents.Where(r => r.id == selectedRentId).FirstOrDefault();
-
-                if (selectedRent.date_back != null)
+                var selectedRentId = Convert.ToInt32(dgvRent.SelectedRows[0].Cells["RentId"].Value);
+                try
                 {
-                    MessageBox.Show("Car is back already.", "Info!");
-                    return;
-                }
+                    var selectedRent = RentalDatabase.GetRent(selectedRentId);
 
-                RentBack rentBack = new RentBack(selectedRent);
-                rentBack.StartPosition = FormStartPosition.CenterScreen;
-                rentBack.Show();
-                AddEditIsOpen = true;
+                    if (selectedRent.date_back != null)
+                    {
+                        MessageBox.Show("Car is back already.", "Info!");
+                        return;
+                    }
+
+                    RentBack rentBack = new RentBack(selectedRent);
+                    rentBack.StartPosition = FormStartPosition.CenterScreen;
+                    rentBack.Show();
+                    AddEditIsOpen = true;
+                }
+                catch (EntityException ex)
+                {
+                    MessageBox.Show("Database connection failed", "Alert!");
+                    MessageBox.Show(ex.StackTrace, "Info!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occured.", "Alert!");
+                    MessageBox.Show(ex.StackTrace, "Info!");
+                    throw;
+                }
             }
             else
             {
@@ -54,7 +66,7 @@ namespace CarRental
         }
         private void rentSearchButton_Click(object sender, EventArgs e)
         {
-            var rentId = tbRentId.Text;
+            var rentId = (int)nudRentId.Value;
             var surname = tbRentSurname.Text.ToUpper();
             var email = tbEmail.Text.ToLower();
             var phone = tbPhone.Text;
@@ -62,34 +74,21 @@ namespace CarRental
             var dateFrom = dtpFrom.Value;
             var dateTo = dtpTo.Value;
 
-            var rentData = from r in RentalDatabase.DB.Rents
-                           join cr in RentalDatabase.DB.Cars
-                           on r.car_id equals cr.id
-                           join cu in RentalDatabase.DB.Customers
-                           on r.customer_id equals cu.id
-                           where cu.surname.Contains(surname)
-                           where cu.email.Contains(email)
-                           where cu.phone.Contains(phone)
-                           where cu.licence.Contains(licence)
-                           where r.date_start >= dateFrom
-                           where r.date_start <= dateTo
-                           select new
-                           {
-                               RENT_ID = r.id,
-                               CUSTOMER = cu.surname + " " + cu.name,
-                               CAR = cr.manufacturer + " " + cr.model,
-                               START = r.date_start,
-                               END = r.date_back
-                           };
-
             try
             {
-                dgvRent.DataSource = rentData.ToList();
+                var rentData = RentalDatabase.SearchRents(rentId, surname, email, phone, licence, dateFrom, dateTo);
+                dgvRent.DataSource = rentData;
             }
-            catch (Exception ex)
+            catch (EntityException ex)
             {
                 MessageBox.Show("Connection to database failed.", "Alert!");
                 MessageBox.Show(ex.StackTrace, "Info!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured.", "Alert!");
+                MessageBox.Show(ex.StackTrace, "Info!");
+                throw;
             }
         }
 
@@ -103,78 +102,47 @@ namespace CarRental
                 return;
             }
 
-            var rentId = Convert.ToInt32(selectedRows[0].Cells["RENT_ID"].Value);
+            var rentId = Convert.ToInt32(selectedRows[0].Cells["RentId"].Value);
 
             var userAnswer = MessageBox.Show("Invoice for selected rent will be created, proceed?", "Info!", MessageBoxButtons.YesNo);
 
             if (userAnswer == DialogResult.Yes
-                && !IsInvoiceExisting(rentId)
-                && ReturnDateIsNotNull(rentId))
+                && !RentalDatabase.InvoiceForRentExists(rentId)
+                && RentalDatabase.ReturnDateNotNull(rentId))
             {
-                Invoices invoices = new Invoices();
-
-                var carPrice = from c in RentalDatabase.DB.Cars
-                               join r in RentalDatabase.DB.Rents
-                               on c.id equals r.car_id
-                               where r.id == rentId
-                               select c.daily_rate;
-
-                var daysInRent = RentalDatabase.DB.Rents.Where(r => r.id == rentId)
-                                                        .Select(r => DbFunctions.DiffDays(r.date_start, r.date_back))
-                                                        .FirstOrDefault();
-
-                invoices.date = DateTime.Now;
-                invoices.rent_id = rentId;
-                var totalPrice = (daysInRent == 0 ? 1 : daysInRent) * carPrice.FirstOrDefault();
-                invoices.price = Convert.ToDecimal(totalPrice);
-
                 try
                 {
+                    Invoices invoices = new Invoices();
+                    var carDailyRate = RentalDatabase.GetCarRate(rentId);
+                    var daysInRent = RentalDatabase.GetDaysInRent(rentId);
+                    invoices.date = DateTime.Now;
+                    invoices.rent_id = rentId;
+                    var totalPrice = (daysInRent == 0 ? 1 : daysInRent) * carDailyRate;
+                    invoices.price = Convert.ToDecimal(totalPrice);
                     RentalDatabase.DB.Invoices.Add(invoices);
                     RentalDatabase.DB.SaveChanges();
                     MessageBox.Show("Invoice created!", "Info!");
                 }
-                catch (Exception ex)
+                catch (EntityException ex)
                 {
                     MessageBox.Show("Database connection failed", "Alert!");
                     MessageBox.Show(ex.StackTrace, "Info!");
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occured.", "Alert!");
+                    MessageBox.Show(ex.StackTrace, "Info!");
+                    throw;
+                }
             }
-            else if (IsInvoiceExisting(rentId))
+            else if (RentalDatabase.InvoiceForRentExists(rentId))
             {
                 MessageBox.Show("Invoice already exists for this rent.", "Info!");
             }
-            else if (!ReturnDateIsNotNull(rentId))
+            else if (!RentalDatabase.ReturnDateNotNull(rentId))
             {
                 MessageBox.Show("Cannot create invoice if return date is null.", "Info!");
             }
-        }
-
-        private bool ReturnDateIsNotNull(int rentId)
-        {
-            var rent = RentalDatabase.DB.Rents.Where(r => r.date_back != null && r.id == rentId).Count();
-
-            if (rent > 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool IsInvoiceExisting(int rentId)
-        {
-            var invoices = from i in RentalDatabase.DB.Invoices
-                           join r in RentalDatabase.DB.Rents
-                           on i.rent_id equals r.id
-                           where i.rent_id == rentId
-                           select i;
-
-            if (invoices.Count() > 0)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

@@ -52,8 +52,34 @@ namespace CarRental.Forms
         }
         private void SaveCar(Cars car)
         {
-            if (!ValidateInput())
+            if (!InputValidation.CarManufacturer(tbCarManufacturer.Text))
             {
+                MessageBox.Show("Manufacturer cannot be empty.", "Alert!");
+                return;
+            }
+            if (!InputValidation.CarModel(tbCarModel.Text))
+            {
+                MessageBox.Show("Model cannot be empty.", "Alert!");
+                return;
+            }           
+            if (!InputValidation.CarYear((int)nudCarYear.Value))
+            {
+                MessageBox.Show("Production year cannot be from future.", "Alert!");
+                return;
+            }
+            if (!InputValidation.CarRate((int)nudCarRate.Value))
+            {
+                MessageBox.Show("Incorrect daily rate.", "Alert!");
+                return;
+            }
+            if (!InputValidation.CarVin(tbVIN.Text))
+            {
+                MessageBox.Show("VIN number should have 17 characters.", "Alert!");
+                return;
+            }
+            if (!InputValidation.CarInsurance(dtpCarInsurance.Value))
+            {
+                MessageBox.Show("Incorrect insurance date.", "Alert!");
                 return;
             }
 
@@ -82,43 +108,6 @@ namespace CarRental.Forms
             }
 
             this.Close();
-        }
-        private bool ValidateInput()
-        {
-            if (tbCarManufacturer.Text.Length == 0 || tbCarModel.Text.Length == 0)
-            {
-                MessageBox.Show("Fields cannot be empty.", "Alert!");
-                return false;
-            }
-
-            if (nudCarYear.Value > DateTime.Now.Year)
-            {
-                MessageBox.Show("Production year cannot be from future.", "Alert!");
-                return false;
-            }
-            
-            if (nudCarRate.Value > 5000 || nudCarRate.Value <= 0)
-            {
-                MessageBox.Show("Incorrect daily rate.", "Alert!");
-                return false;
-            }
-
-            Regex vinPattern = new Regex("[a-z0-9]{17}", RegexOptions.IgnoreCase);
-            bool vinChecked = vinPattern.IsMatch(tbVIN.Text);
-
-            if (!vinChecked)
-            {
-                MessageBox.Show("VIN number should have 17 characters.", "Alert!");
-                return false;
-            }
-
-            if (dtpCarInsurance.Value < DateTime.Now || dtpCarInsurance.Value > DateTime.Now.AddYears(1))
-            {
-                MessageBox.Show("Incorrect insurance date.", "Alert!");
-                return false;
-            }
-
-            return true;
         }
     }
 }
