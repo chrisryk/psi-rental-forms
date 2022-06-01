@@ -23,6 +23,7 @@ namespace CarRental.Forms
             this.carToEdit = carToEdit;
             tbCarManufacturer.Text = carToEdit.manufacturer;
             tbCarModel.Text = carToEdit.model;
+            dtpCarInsurance.Value = carToEdit.insurance;
             tbVIN.Text = carToEdit.vin;
             nudCarYear.Value = carToEdit.year;
             nudCarRate.Value = (int)carToEdit.daily_rate;
