@@ -55,12 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cars.cs">
+    <Compile Include="Database\Cars.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Core\InputValidation.cs" />
     <Compile Include="Core\RoleSetter.cs" />
-    <Compile Include="Customers.cs">
+    <Compile Include="Database\Customers.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\CarDisplaySearch.cs" />
@@ -68,116 +68,116 @@
     <Compile Include="Database\CustomerDisplaySearch.cs" />
     <Compile Include="Database\InvoiceDisplaySearch.cs" />
     <Compile Include="Database\RentDisplaySearch.cs" />
-    <Compile Include="Forms\CarAddEdit.cs">
+    <Compile Include="GUI\Forms\CarAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CarAddEdit.Designer.cs">
+    <Compile Include="GUI\Forms\CarAddEdit.Designer.cs">
       <DependentUpon>CarAddEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomerAddEdit.cs">
+    <Compile Include="GUI\Forms\CustomerAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomerAddEdit.Designer.cs">
+    <Compile Include="GUI\Forms\CustomerAddEdit.Designer.cs">
       <DependentUpon>CustomerAddEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormLogin.cs">
+    <Compile Include="GUI\Forms\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormLogin.Designer.cs">
+    <Compile Include="GUI\Forms\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormRental.cs">
+    <Compile Include="GUI\Forms\FormRental.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormRental.Designer.cs">
+    <Compile Include="GUI\Forms\FormRental.Designer.cs">
       <DependentUpon>FormRental.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RentAdd.cs">
+    <Compile Include="GUI\Forms\RentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RentAdd.Designer.cs">
+    <Compile Include="GUI\Forms\RentAdd.Designer.cs">
       <DependentUpon>RentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RentBack.cs">
+    <Compile Include="GUI\Forms\RentBack.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RentBack.Designer.cs">
+    <Compile Include="GUI\Forms\RentBack.Designer.cs">
       <DependentUpon>RentBack.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoices.cs">
+    <Compile Include="Database\Invoices.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database\RentalDatabase.cs" />
-    <Compile Include="RentalModel.Context.cs">
+    <Compile Include="Database\RentalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RentalModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="RentalModel.cs">
+    <Compile Include="Database\RentalModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RentalModel.Designer.cs">
+    <Compile Include="Database\RentalModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RentalModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Rents.cs">
+    <Compile Include="Database\Rents.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Core\Role.cs" />
-    <Compile Include="Roles.cs">
+    <Compile Include="Database\Roles.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Database\sysdiagrams.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlCarManager.cs">
+    <Compile Include="GUI\UserControls\UserControlCarManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControlCarManager.Designer.cs">
+    <Compile Include="GUI\UserControls\UserControlCarManager.Designer.cs">
       <DependentUpon>UserControlCarManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlCustomerManager.cs">
+    <Compile Include="GUI\UserControls\UserControlCustomerManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControlCustomerManager.Designer.cs">
+    <Compile Include="GUI\UserControls\UserControlCustomerManager.Designer.cs">
       <DependentUpon>UserControlCustomerManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlInvoiceManager.cs">
+    <Compile Include="GUI\UserControls\UserControlInvoiceManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControlInvoiceManager.Designer.cs">
+    <Compile Include="GUI\UserControls\UserControlInvoiceManager.Designer.cs">
       <DependentUpon>UserControlInvoiceManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlRentManager.cs">
+    <Compile Include="GUI\UserControls\UserControlRentManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControlRentManager.Designer.cs">
+    <Compile Include="GUI\UserControls\UserControlRentManager.Designer.cs">
       <DependentUpon>UserControlRentManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
+    <Compile Include="Database\Users.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\CarAddEdit.resx">
+    <EmbeddedResource Include="GUI\Forms\CarAddEdit.resx">
       <DependentUpon>CarAddEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomerAddEdit.resx">
+    <EmbeddedResource Include="GUI\Forms\CustomerAddEdit.resx">
       <DependentUpon>CustomerAddEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormLogin.resx">
+    <EmbeddedResource Include="GUI\Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormRental.resx">
+    <EmbeddedResource Include="GUI\Forms\FormRental.resx">
       <DependentUpon>FormRental.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RentAdd.resx">
+    <EmbeddedResource Include="GUI\Forms\RentAdd.resx">
       <DependentUpon>RentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RentBack.resx">
+    <EmbeddedResource Include="GUI\Forms\RentBack.resx">
       <DependentUpon>RentBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -189,16 +189,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\UserControlCarManager.resx">
+    <EmbeddedResource Include="GUI\UserControls\UserControlCarManager.resx">
       <DependentUpon>UserControlCarManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlCustomerManager.resx">
+    <EmbeddedResource Include="GUI\UserControls\UserControlCustomerManager.resx">
       <DependentUpon>UserControlCustomerManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlInvoiceManager.resx">
+    <EmbeddedResource Include="GUI\UserControls\UserControlInvoiceManager.resx">
       <DependentUpon>UserControlInvoiceManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlRentManager.resx">
+    <EmbeddedResource Include="GUI\UserControls\UserControlRentManager.resx">
       <DependentUpon>UserControlRentManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -211,11 +211,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="RentalModel.edmx">
+    <EntityDeploy Include="Database\RentalModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RentalModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="RentalModel.edmx.diagram">
+    <None Include="Database\RentalModel.edmx.diagram">
       <DependentUpon>RentalModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
@@ -223,15 +223,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="GUI\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RentalModel.Context.tt">
+    <Content Include="Database\RentalModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RentalModel.Context.cs</LastGenOutput>
       <DependentUpon>RentalModel.edmx</DependentUpon>
     </Content>
-    <Content Include="RentalModel.tt">
+    <Content Include="Database\RentalModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RentalModel.edmx</DependentUpon>
       <LastGenOutput>RentalModel.cs</LastGenOutput>

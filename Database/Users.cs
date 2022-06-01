@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CarRental
+namespace CarRental.Database
 {
     using System;
     using System.Collections.Generic;

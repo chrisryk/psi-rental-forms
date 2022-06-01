@@ -7,25 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CarRental
+namespace CarRental.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Customers
+    public partial class Cars
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customers()
+        public Cars()
         {
             this.Rents = new HashSet<Rents>();
         }
     
         public decimal id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
-        public string licence { get; set; }
+        public string manufacturer { get; set; }
+        public string model { get; set; }
+        public decimal year { get; set; }
+        public System.DateTime insurance { get; set; }
+        public string vin { get; set; }
+        public decimal daily_rate { get; set; }
+        public bool rented { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rents> Rents { get; set; }
