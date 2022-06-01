@@ -81,18 +81,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Roles_Roles">
-    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-    <End Role="Roles1" Type="Self.Roles" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Roles">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Roles1">
-        <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Users_Roles">
     <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -116,10 +104,6 @@
     <AssociationSet Name="FK_Invoice_Rent" Association="Self.FK_Invoice_Rent">
       <End Role="Rents" EntitySet="Rents" />
       <End Role="Invoices" EntitySet="Invoices" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Roles_Roles" Association="Self.FK_Roles_Roles">
-      <End Role="Roles" EntitySet="Roles" />
-      <End Role="Roles1" EntitySet="Roles" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
       <End Role="Roles" EntitySet="Roles" />

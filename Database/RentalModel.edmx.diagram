@@ -9,13 +9,12 @@
         <EntityTypeShape EntityType="RentalModel.Customers" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.Invoices" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.Rents" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentalModel.Roles" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalModel.Roles" Width="1.5" PointX="0.875" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.Users" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="RentalModel.FK_Rent_Car" ManuallyRouted="false" />
         <AssociationConnector Association="RentalModel.FK_Rent_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="RentalModel.FK_Invoice_Rent" ManuallyRouted="false" />
-        <AssociationConnector Association="RentalModel.FK_Roles_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="RentalModel.FK_Users_Roles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

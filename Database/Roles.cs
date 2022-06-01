@@ -23,8 +23,6 @@ namespace CarRental.Database
         public decimal id { get; set; }
         public string role { get; set; }
     
-        public virtual Roles Roles1 { get; set; }
-        public virtual Roles Roles2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
     }
